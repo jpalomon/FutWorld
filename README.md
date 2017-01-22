@@ -1,4 +1,4 @@
-# **[FUTWORLD]**
+# **FUTWORLD**
 
 Football Database
 
