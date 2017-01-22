@@ -16,7 +16,7 @@ La aplicación web consiste, en una base de datos donde se pueden hacer diferent
 	+ Nacionalidad: se mostrarán los jugadores con esa nacionalidad dentro de un mismo equipo o en general.
 	+ Valor de Mercado: se mostrarán los jugadores que tengan ese valor de mercado dentro de un mismo equipo o en general.
 
-* Parte Privada: cada usuario podrá inscribir y administrar a un sólo equipo, gestionando su plantilla y jugadores. Cuando se inscriba un jugador, se deberá indicar su nombre, equipo, edad, nacionalidad y valor de mercado. Importante: un usuario no puede gestionar un equipo que no es el suyo por lo que, para evitar que esto ocurra, se gestionará dicha funcionalidad mediante un usuario y contraseña para cada usuario.
+* Parte Privada: cada usuario podrá inscribir y administrar a un sólo equipo, gestionando su plantilla y jugadores. Cuando se inscriba un jugador, se deberá indicar su nombre, equipo, edad, nacionalidad y valor de mercado. Importante: un usuario no puede gestionar un equipo que no es el suyo por lo que, para evitar que esto ocurra, se gestionará dicha funcionalidad mediante un nombre de usuario o login para cada usuario.
 
 ## Entidades Principales:
 
