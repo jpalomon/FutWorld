@@ -8,7 +8,7 @@ Football Database
 
 La aplicación web consiste, en una base de datos donde se pueden hacer diferentes consultas de fútbol y, a su vez, se puede inscribir nuevos equipos y jugadores si eres el mánager de un équipo. Para ello, hemos dividido la aplicación web en dos partes diferenciadas:
 
-* Parte Pública: únicamente se podrán realizar consultas a la base de datos. Para, realizar dichas consultas, podremos filtrar los resultados por:
+* Parte Pública: únicamente se podrán realizar consultas a la base de datos. Para realizar dichas consultas, podremos filtrar los resultados por:
 
 	+ Nombre del Jugador: se mostrarán las características de un único jugador.
 	+ Equipo: se mostrarán todos los jugadores pertenecientes a ese equipo.
