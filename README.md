@@ -18,7 +18,11 @@ La aplicación web, consiste en una base de datos donde se pueden hacer diferent
 	+ Liga: se mostrarán los equipos participantes en una determinada liga.
 	+ Palmarés: se mostrará el ranking de campeones de una liga en los últimos años.
 
+
+* Parte Privada: cada usuario podrá inscribir y administrar a un sólo equipo, gestionando su plantilla y jugadores. Cuando se inscriba un jugador, se deberá indicar su nombre, equipo, edad, nacionalidad y valor de mercado. Importante: un usuario no puede gestionar un equipo que no es el suyo por lo que, para evitar que esto ocurra, se gestionará dicha funcionalidad mediante un usuario y contraseña para cada usuario. Añadimos un servicio de uso exclusivamente interno, el cual permite al manager subir imagenes de los jugadores de su plantilla al editarlos.
+
 * Parte Privada: cada usuario (mánager) puede inscribir y administrar a un sólo equipo, gestionando su plantilla y jugadores. Primeramente, debe indicar en que liga va a participar su equipo y, posteriormente, ha de inscibir a los jugadores pertenecientes a su plantilla. Cuando se inscribe a un jugador, se debe indicar su nombre, equipo, edad, nacionalidad y valor de mercado. Importante: un usuario no puede gestionar un equipo que no es el suyo, por lo que, para evitar que esto ocurra, se gestiona dicha funcionalidad mediante un nombre de usuario y contraseña para cada mánager de equipo. Añadimos un servicio de uso exclusivamente interno, el cual permite al manager subir imagenes de los jugadores de su plantilla al editarlos.
+
 
 ## Entidades Principales:
 
