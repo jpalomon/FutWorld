@@ -1,23 +1,26 @@
 package es.urjc.code.dad;
 
-public class Jugador {
+import java.util.ArrayList;
+
+public class Equipo {
 	
 	private int id;
 	private String nombre;
-	private Equipo equipo;
-	private int edad;
+	private ArrayList<Jugador> jugadores;
+	private Palmares palmares;
 	private String nacionalidad;
 	private long valorMercado;
 	
-	public Jugador(){
+	public Equipo(){
+		
 	}
 	
-	public Jugador (String nombre,Equipo equipo, int edad, String nacionalidad, long valorMercado){
+	public Equipo (String nombre,ArrayList<Jugador> jugadores, Palmares palmares, String nacionalidad, long valorMercado){
 		this.nombre = nombre;
-		this.equipo = equipo;
-		this.edad = edad;
+		this.jugadores = jugadores;
+		this.palmares = palmares;
 		this.nacionalidad = nacionalidad;
-		this.valorMercado = valorMercado;
+		this.valorMercado = valorMercado;		
 	}
 
 	public int getId() {
@@ -36,20 +39,20 @@ public class Jugador {
 		this.nombre = nombre;
 	}
 
-	public Equipo getEquipo() {
-		return equipo;
+	public ArrayList<Jugador> getJugadores() {
+		return jugadores;
 	}
 
-	public void setEquipo(Equipo equipo) {
-		this.equipo = equipo;
+	public void setJugadores(ArrayList<Jugador> jugadores) {
+		this.jugadores = jugadores;
 	}
 
-	public int getEdad() {
-		return edad;
+	public Palmares getPalmares() {
+		return palmares;
 	}
 
-	public void setEdad(int edad) {
-		this.edad = edad;
+	public void setPalmares(Palmares palmares) {
+		this.palmares = palmares;
 	}
 
 	public String getNacionalidad() {
@@ -66,6 +69,6 @@ public class Jugador {
 
 	public void setValorMercado(long valorMercado) {
 		this.valorMercado = valorMercado;
-	}
+	}	
 	
 }
