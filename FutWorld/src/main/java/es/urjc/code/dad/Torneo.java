@@ -16,5 +16,28 @@ public class Torneo {
 		this.nombreLiga = nombreLiga;
 		this.equipos = equipos;
 	}
-	
+
+	public int getId() {
+		return id;
+	} 
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getNombreLiga() {
+		return nombreLiga;
+	}
+
+	public void setNombreLiga(String nombreLiga) {
+		this.nombreLiga = nombreLiga;
+	}
+
+	public ArrayList<Equipo> getEquipos() {
+		return equipos;
+	}
+
+	public void setEquipos(ArrayList<Equipo> equipos) {
+		this.equipos = equipos;
+	}	
 }
