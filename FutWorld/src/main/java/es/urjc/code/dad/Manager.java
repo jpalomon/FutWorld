@@ -1,29 +1,37 @@
 package es.urjc.code.dad;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Manager {
 
-	private int id;
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private long id;
 	private String nombre;
 	private Equipo equipo;
 	private String user;
 	private String password;
 	
 	public Manager(){
+		id = 0;
 	}
 
-	public Manager(int id, String nombre, Equipo equipo, String user, String password) {
-		this.id = id;
+	public Manager(String nombre, Equipo equipo, String user, String password) {
 		this.nombre = nombre;
 		this.equipo = equipo;
 		this.user = user;
 		this.password = password;
 	}
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

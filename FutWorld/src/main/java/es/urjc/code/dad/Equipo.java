@@ -1,10 +1,17 @@
 package es.urjc.code.dad;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.util.ArrayList;
 
+@Entity
 public class Equipo {
 	
-	private int id;
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private long id;
 	private String nombre;
 	private ArrayList<Jugador> jugadores;
 	private Palmares palmares;
@@ -12,7 +19,7 @@ public class Equipo {
 	private long valorMercado;
 	
 	public Equipo(){
-		
+		id = 0;
 	}
 	
 	public Equipo (String nombre,ArrayList<Jugador> jugadores, Palmares palmares, String nacionalidad, long valorMercado){
@@ -23,11 +30,11 @@ public class Equipo {
 		this.valorMercado = valorMercado;		
 	}
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
