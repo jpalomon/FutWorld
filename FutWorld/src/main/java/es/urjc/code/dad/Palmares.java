@@ -1,26 +1,33 @@
 package es.urjc.code.dad;
 
-public class Palmares {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
-	private int id;
+@Entity
+public class Palmares {
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private long id;
 	private Torneo torneo;
 	private int numTorneoGanados;
 	
 	public Palmares(){
-		
+		id = 0;
 	}
 
-	public Palmares(int id, Torneo torneo, int numTorneoGanados) {
-		this.id = id;
+	public Palmares(Torneo torneo, int numTorneoGanados) {
 		this.torneo = torneo;
 		this.numTorneoGanados = numTorneoGanados;
 	}
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
