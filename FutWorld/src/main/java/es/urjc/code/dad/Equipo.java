@@ -1,26 +1,47 @@
 package es.urjc.code.dad;
 
-import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
+@Entity
 public class Equipo {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
-	private String nombre;
-	private ArrayList<Jugador> jugadores;
-	private Palmares palmares;
-	private String nacionalidad;
-	private long valorMercado;
+	private String nombreEquipo;
+	private String nacionalidadEquipo;
+	private int numTorneoGanados;
+	
+	@OneToMany(mappedBy="equipo")
+	private List<Jugador> jugadores;
+	
+	@ManyToOne
+	private Palmares palmares;	
+	
+	@OneToOne(mappedBy="equipo")
+	private Manager manager;
+	
+	@ManyToOne
+	private Torneo torneo;
 	
 	public Equipo(){
-		id = 0;
 	}
 	
-	public Equipo (String nombre,ArrayList<Jugador> jugadores, Palmares palmares, String nacionalidad, long valorMercado){
-		this.nombre = nombre;
+	public Equipo (String nombreEquipo,List<Jugador> jugadores,Torneo torneo ,Palmares palmares, String nacionalidadEquipo, int numTorneoGanados){
+		this.nombreEquipo = nombreEquipo;
 		this.jugadores = jugadores;
+		this.torneo = torneo;
 		this.palmares = palmares;
-		this.nacionalidad = nacionalidad;
-		this.valorMercado = valorMercado;		
+		this.nacionalidadEquipo = nacionalidadEquipo;
+		this.numTorneoGanados = numTorneoGanados;		
 	}
 
 	public long getId() {
@@ -32,18 +53,34 @@ public class Equipo {
 	}
 
 	public String getNombre() {
-		return nombre;
+		return nombreEquipo;
 	}
 
 	public void setNombre(String nombre) {
-		this.nombre = nombre;
+		this.nombreEquipo = nombre;
 	}
 
-	public ArrayList<Jugador> getJugadores() {
+	public String getNacionalidad() {
+		return nacionalidadEquipo;
+	}
+
+	public void setNacionalidad(String nacionalidad) {
+		this.nacionalidadEquipo = nacionalidad;
+	}
+
+	public int getNumTorneoGanados() {
+		return numTorneoGanados;
+	}
+
+	public void setNumTorneoGanados(int numTorneoGanados) {
+		this.numTorneoGanados = numTorneoGanados;
+	}
+
+	public List<Jugador> getJugadores() {
 		return jugadores;
 	}
 
-	public void setJugadores(ArrayList<Jugador> jugadores) {
+	public void setJugadores(List<Jugador> jugadores) {
 		this.jugadores = jugadores;
 	}
 
@@ -55,20 +92,27 @@ public class Equipo {
 		this.palmares = palmares;
 	}
 
-	public String getNacionalidad() {
-		return nacionalidad;
+	public Manager getManager() {
+		return manager;
 	}
 
-	public void setNacionalidad(String nacionalidad) {
-		this.nacionalidad = nacionalidad;
+	public void setManager(Manager manager) {
+		this.manager = manager;
 	}
 
-	public long getValorMercado() {
-		return valorMercado;
+	public Torneo getTorneo() {
+		return torneo;
 	}
 
-	public void setValorMercado(long valorMercado) {
-		this.valorMercado = valorMercado;
-	}	
-	
+	public void setTorneo(Torneo torneo) {
+		this.torneo = torneo;
+	}
+
+	@Override
+	public String toString() {
+		return "Equipo [id=" + id + ", nombre=" + nombreEquipo + ", nacionalidad=" + nacionalidadEquipo + ", numTorneoGanados="
+				+ numTorneoGanados + ", jugadores=" + jugadores + ", palmares=" + palmares + ", manager=" + manager
+				+ ", torneo=" + torneo + "]";
+	}
+
 }

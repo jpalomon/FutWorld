@@ -1,25 +1,34 @@
 package es.urjc.code.dad;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
+@Entity
 public class Jugador {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
-	private String nombre;
-	private Equipo equipo;
+	private String nombreJugador;
 	private int edad;
-	private String nacionalidad;
+	private String nacionalidadJugador;
 	private long valorMercado;
 	
+	@ManyToOne
+	private Equipo equipo;
 	
 	public Jugador(){
-		id = 0;
+		
 	}
 	
-	public Jugador (String nombre,Equipo equipo, int edad, String nacionalidad, long valorMercado){
-		this.nombre = nombre;
+	public Jugador (String nombreJugador,Equipo equipo, int edad, String nacionalidadJugador, long valorMercado){
+		this.nombreJugador = nombreJugador;
 		this.equipo = equipo;
 		this.edad = edad;
-		this.nacionalidad = nacionalidad;
+		this.nacionalidadJugador = nacionalidadJugador;
 		this.valorMercado = valorMercado;
 	}
 
@@ -32,11 +41,11 @@ public class Jugador {
 	}
 
 	public String getNombre() {
-		return nombre;
+		return nombreJugador;
 	}
 
 	public void setNombre(String nombre) {
-		this.nombre = nombre;
+		this.nombreJugador = nombre;
 	}
 
 	public Equipo getEquipo() {
@@ -56,11 +65,11 @@ public class Jugador {
 	}
 
 	public String getNacionalidad() {
-		return nacionalidad;
+		return nacionalidadJugador;
 	}
 
 	public void setNacionalidad(String nacionalidad) {
-		this.nacionalidad = nacionalidad;
+		this.nacionalidadJugador = nacionalidad;
 	}
 
 	public long getValorMercado() {
@@ -71,4 +80,9 @@ public class Jugador {
 		this.valorMercado = valorMercado;
 	}
 	
+	@Override
+	public String toString() {
+		return "Jugador [id=" + id + ", nombre=" + nombreJugador + ", equipo=" + equipo + ", edad=" + edad + ", nacionalidad="
+				+ nacionalidadJugador + ", valorMercado=" + valorMercado + "]";
+	}
 }
