@@ -813,11 +813,22 @@ public class FutWorldController {
 		return "consultatorneo";
 	}
 	
-	//Registrar Usuario
+	//Registrar Mánager
 	@PostMapping("/manager/nuevo")
 	public String RegistroManager (Manager manager){
 		managerRepository.save(manager);
 		return "managerregistrado";
 	}
 	
+	//Información Manager.
+	@GetMapping("/informacionmanager/user/password")
+	public String areaManager(Model model, @RequestParam String user, @RequestParam String password){
+	
+		Manager manager = managerRepository.findByUserAndPassword(user,password);
+		
+		model.addAttribute("manager", manager);
+		
+		return "consultardatosmanager";
+	}
+		
 }

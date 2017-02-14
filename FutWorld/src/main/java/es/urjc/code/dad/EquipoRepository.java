@@ -9,4 +9,6 @@ public interface EquipoRepository extends JpaRepository<Equipo, Long> {
 	List<Equipo> findDistinctEquiposByLigaOrderByNombreEquipoAsc(String liga);
 	List<Equipo> findDistinctEquiposByLigaOrderByNumTorneoGanadosDesc(String liga);
 	
+	Equipo findByNombreEquipo(String nombreEquipo);	
+	
 }

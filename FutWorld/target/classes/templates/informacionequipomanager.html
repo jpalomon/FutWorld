@@ -76,58 +76,50 @@
 			</tr>
 		  </tbody>
 		</table>
-		<h1 align="center">JUGADOR</h1>
+		<h1 align="center">EQUIPO MANAGER</h1>
 		<TABLE align="center" BORDER=0 BGCOLOR=#000099>
 			<TR style="background-color: silver; height: 25px">
 				<TH>
 					<h4>ID</h4>
 				</TH>
 				<TH>
-					<h4>JUGADOR</h4>
+					<h4>EQUIPO</h4>
 				</TH>
 				<TH>
-					<h4>FOTO</h4>
+					<h4>TORNEO</h4>
 				</TH>				
-				<TH>
-					<h4>POSICIÓN</h4>
-				</TH>
-				<TH>
-					<h4>EDAD</h4>
-				</TH>
 				<TH>
 					<h4>NACIONALIDAD</h4>
 				</TH>
 				<TH>
-					<h4>VALOR DE MERCADO</h4>
+					<h4>TORNEOS GANADOS</h4>
 				</TH>				
 			</TR>
-			{{#jugador}}
+			{{#equipo}}
 			<TR BGCOLOR=#FFFFFF style="height: 25px">
-				<TH> {{id}}
+				<TH>{{id}}
 				</TH>
-				<TH> {{nombreJugador}}
+				<TH>{{nombreEquipo}}
 				</TH>
-				<TH>
+				<TH>{{liga}}
 				</TH>
-				<TH> {{posicion}}
+				<TH>{{nacionalidadEquipo}}
 				</TH>
-				<TH> {{edad}}
-				</TH>	
-				<TH> {{nacionalidadJugador}}
+				<TH>{{numTorneoGanados}}
 				</TH>				
-				<TH> {{valorMercado}}
-				</TH>
 			</TR>
-			{{/jugador}}			
+			{{/equipo}}			
 		</TABLE>
 		<br>
 		<br>
+		<form action="/gestionmanager/user" method="post">
 		<TABLE align="center" BORDER=0 BGCOLOR=#000099>
 			<TR>
 				<TH BGCOLOR=#000099>
-					<a href="/"><input type="button" value="Volver" style="background-color: silver; height: 75px; width: 300px; border: 1px solid #000099; font-weight:bold;font-size: 20px;"></a>
+					<input type="submit" value="Volver" style="background-color: silver; height: 75px; width: 300px; border: 1px solid #000099; font-weight:bold;font-size: 20px;">
 				</TH>
 			</TR>
-		</TABLE>	
+		</TABLE>
+		</form>		
 	</BODY>	
 </HTML>

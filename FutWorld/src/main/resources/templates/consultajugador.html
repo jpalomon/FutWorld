@@ -101,22 +101,24 @@
 					<h4>VALOR DE MERCADO</h4>
 				</TH>				
 			</TR>
+			{{#jugador}}
 			<TR BGCOLOR=#FFFFFF style="height: 25px">
-				<TH> {{jugador.id}}
+				<TH> {{id}}
 				</TH>
-				<TH> {{jugador.nombreJugador}}
+				<TH> {{nombreJugador}}
 				</TH>
 				<TH>
 				</TH>
-				<TH> {{jugador.posicion}}
+				<TH> {{posicion}}
 				</TH>
-				<TH> {{jugador.edad}}
+				<TH> {{edad}}
 				</TH>	
-				<TH> {{jugador.nacionalidadJugador}}
+				<TH> {{nacionalidadJugador}}
 				</TH>				
-				<TH> {{jugador.valorMercado}}
+				<TH> {{valorMercado}}
 				</TH>
 			</TR>
+			{{/jugador}}			
 		</TABLE>
 		<br>
 		<br>
