@@ -770,6 +770,17 @@ public class FutWorldController {
 		return "consultaequipo";
 	}
 	
+	//Buscar Edad Jugadores.
+	@GetMapping("/consultaredadjugadores/edad")
+	public String verEdadJugadores (Model model, @RequestParam int edad){
+		
+		List<Jugador> jugador = jugadorRepository.findDistinctJugadoresByEdad(edad);
+		
+		model.addAttribute("jugador", jugador);		
+		
+		return "consultaedadjugadores";
+	}	
+	
 	//Buscar Nacionalidad Jugadores.
 	@GetMapping("/consultarpaisjugadores/nacionalidadJugador")
 	public String verNacionalidadJugadores (Model model, @RequestParam String nacionalidadJugador){
