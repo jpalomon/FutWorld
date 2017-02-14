@@ -9,5 +9,6 @@ public interface JugadorRepository extends JpaRepository <Jugador, Long>{
 	Jugador findByNombreJugador(String nombreJugador);
 	
 	List<Jugador> findDistinctJugadoresByEquipoJugador(String equipoJugador);
+	List<Jugador>  findDistinctJugadoresByNacionalidadJugador(String nacionalidadJugador);
 
 }
