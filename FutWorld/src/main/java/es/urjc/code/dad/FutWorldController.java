@@ -7,7 +7,11 @@ import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class FutWorldController {
@@ -19,26 +23,26 @@ public class FutWorldController {
 	private EquipoRepository equipoRepository;
 	
 	@Autowired
-	private JugadorResository jugadorRepository;
+	private JugadorRepository jugadorRepository;
 	
 	@Autowired
 	private ManagerRepository managerRepository;
 	
-	private List<Equipo> equipos = new ArrayList<>();
-	private List<Jugador> jugadores = new ArrayList<>();
+//	private List<Equipo> equipos = new ArrayList<>();
+//	private List<Jugador> jugadores = new ArrayList<>();
 	
 	@PostConstruct 
 	//Indicamos los torneos, equipos y jugadores añadidos por defecto al ejecutarse el programa.
 	public void predeterminado(){
 		//Creamos los Torneos.
-		Torneo ligaEspañola = new Torneo("Liga Española",20);
+		Torneo laLiga = new Torneo("La Liga",20);
 		Torneo premierLeague = new Torneo("Premier League",20);
 		Torneo serieA = new Torneo("Serie A",20);
 		Torneo bundesliga = new Torneo("Bundesliga",20);
 		Torneo ligueOne = new Torneo("Ligue 1",20);
 		Torneo ligaNos = new Torneo("Liga NOS",20);
 		
-		torneoRepository.save(ligaEspañola);
+		torneoRepository.save(laLiga);
 		torneoRepository.save(premierLeague);
 		torneoRepository.save(serieA);
 		torneoRepository.save(bundesliga);
@@ -46,19 +50,19 @@ public class FutWorldController {
 		torneoRepository.save(ligaNos);
 		
 		//Creamos los Equipos de la Liga Española.
-		Equipo realMadrid = new Equipo("Real Madrid","España",32);
-		Equipo barcelona = new Equipo("Barcelona","España",24);
-		Equipo atleticoMadrid = new Equipo("Atletico de Madrid","España",10);
-		Equipo sevilla = new Equipo("Sevilla","España",1);
-		Equipo villarreal = new Equipo("Villarreal","España",0);
-		Equipo leganes = new Equipo("Leganes","España",0);
+		Equipo realMadrid = new Equipo("Real Madrid","La Liga","España",32);
+		Equipo barcelona = new Equipo("Barcelona","La Liga","España",24);
+		Equipo atleticoMadrid = new Equipo("Atletico de Madrid","La Liga","España",10);
+		Equipo sevilla = new Equipo("Sevilla","La Liga","España",1);
+		Equipo villarreal = new Equipo("Villarreal","La Liga","España",0);
+		Equipo leganes = new Equipo("Leganes","La Liga","España",0);
 		
-		realMadrid.setTorneo(ligaEspañola);
-		barcelona.setTorneo(ligaEspañola);
-		atleticoMadrid.setTorneo(ligaEspañola);
-		sevilla.setTorneo(ligaEspañola);
-		villarreal.setTorneo(ligaEspañola);
-		leganes.setTorneo(ligaEspañola);
+		realMadrid.setTorneo(laLiga);
+		barcelona.setTorneo(laLiga);
+		atleticoMadrid.setTorneo(laLiga);
+		sevilla.setTorneo(laLiga);
+		villarreal.setTorneo(laLiga);
+		leganes.setTorneo(laLiga);
 		
 		equipoRepository.save(realMadrid);
 		equipoRepository.save(barcelona);
@@ -68,12 +72,12 @@ public class FutWorldController {
 		equipoRepository.save(leganes);
 		
 		//Creamos los Equipos de la Premier League.
-		Equipo chelsea = new Equipo("Chelsea","Inglaterra",4);
-		Equipo arsenal = new Equipo("Arsenal","Inglaterra",3);
-		Equipo liverpool = new Equipo("Liverpool","Inglaterra",0);
-		Equipo manchesterUnited = new Equipo("Manchester United","Inglaterra",13);
-		Equipo manchesterCity = new Equipo("Manchester City","Inglaterra",2);
-		Equipo tottenham = new Equipo("Tottenham","Inglaterra",0);
+		Equipo chelsea = new Equipo("Chelsea","Premier League","Inglaterra",4);
+		Equipo arsenal = new Equipo("Arsenal","Premier League","Inglaterra",3);
+		Equipo liverpool = new Equipo("Liverpool","Premier League","Inglaterra",0);
+		Equipo manchesterUnited = new Equipo("Manchester United","Premier League","Inglaterra",13);
+		Equipo manchesterCity = new Equipo("Manchester City","Premier League","Inglaterra",2);
+		Equipo tottenham = new Equipo("Tottenham","Premier League","Inglaterra",0);
 		
 		chelsea.setTorneo(premierLeague);
 		arsenal.setTorneo(premierLeague);
@@ -90,11 +94,11 @@ public class FutWorldController {
 		equipoRepository.save(tottenham);
 		
 		//Creamos los Equipos de la Serie A.
-		Equipo juventus = new Equipo("Juventus","Italia",32);
-		Equipo milan = new Equipo("Milan","Italia",18);
-		Equipo interMilan = new Equipo("Inter de Milan","Italia",18);
-		Equipo roma = new Equipo("Roma","Italia",3);
-		Equipo napoles = new Equipo("Napoles","Italia",2);
+		Equipo juventus = new Equipo("Juventus","Serie A","Italia",32);
+		Equipo milan = new Equipo("Milan","Serie A","Italia",18);
+		Equipo interMilan = new Equipo("Inter de Milan","Serie A","Italia",18);
+		Equipo roma = new Equipo("Roma","Serie A","Italia",3);
+		Equipo napoles = new Equipo("Napoles","Serie A","Italia",2);
 		
 		juventus.setTorneo(serieA);
 		milan.setTorneo(serieA);
@@ -109,10 +113,10 @@ public class FutWorldController {
 		equipoRepository.save(napoles);
 		
 		//Creamos los Equipos de la Bundesliga.
-		Equipo bayernMunich = new Equipo("Bayern Munich","Alemania",25);
-		Equipo borussiaDormund = new Equipo("Borussia Dormund","Alemania",5);
-		Equipo bayerLeverkusen = new Equipo("Bayer Leverkusen","Alemania",0);
-		Equipo shalke = new Equipo("Shalke 04","Alemania",0);
+		Equipo bayernMunich = new Equipo("Bayern Munich","Bundesliga","Alemania",25);
+		Equipo borussiaDormund = new Equipo("Borussia Dormund","Bundesliga","Alemania",5);
+		Equipo bayerLeverkusen = new Equipo("Bayer Leverkusen","Bundesliga","Alemania",0);
+		Equipo shalke = new Equipo("Shalke 04","Bundesliga","Alemania",0);
 		
 		bayernMunich.setTorneo(bundesliga);
 		borussiaDormund.setTorneo(bundesliga);
@@ -125,10 +129,10 @@ public class FutWorldController {
 		equipoRepository.save(shalke);
 		
 		//Creamos los Equipos de la Ligue 1.
-		Equipo psg = new Equipo("PSG","Francia",6);
-		Equipo monaco = new Equipo("Monaco","Francia",7);
-		Equipo olympiqueLyon = new Equipo("Olympique de Lyon","Francia",7);
-		Equipo olympiqueMarsella = new Equipo("Olympique de Marsella","Francia",9);
+		Equipo psg = new Equipo("PSG","Ligue 1","Francia",6);
+		Equipo monaco = new Equipo("Monaco","Ligue 1","Francia",7);
+		Equipo olympiqueLyon = new Equipo("Olympique de Lyon","Ligue 1","Francia",7);
+		Equipo olympiqueMarsella = new Equipo("Olympique de Marsella","Ligue 1","Francia",9);
 		
 		psg.setTorneo(ligueOne);
 		monaco.setTorneo(ligueOne);
@@ -141,10 +145,10 @@ public class FutWorldController {
 		equipoRepository.save(olympiqueMarsella);
 		
 		//Creamos los Equipos de la Liga NOS.
-		Equipo oporto = new Equipo("Oporto","Portugal",27);
-		Equipo benfica = new Equipo("Benfica","Portugal",35);
-		Equipo sportingLisboa = new Equipo("Sporting de Lisboa","Portugal",18);
-		Equipo sportingBraga = new Equipo("Sporting de Braga","Portugal",0);
+		Equipo oporto = new Equipo("Oporto","Liga NOS","Portugal",27);
+		Equipo benfica = new Equipo("Benfica","Liga NOS","Portugal",35);
+		Equipo sportingLisboa = new Equipo("Sporting de Lisboa","Liga NOS","Portugal",18);
+		Equipo sportingBraga = new Equipo("Sporting de Braga","Liga NOS","Portugal",0);
 		
 		oporto.setTorneo(ligaNos);
 		benfica.setTorneo(ligaNos);
@@ -157,10 +161,10 @@ public class FutWorldController {
 		equipoRepository.save(sportingBraga);
 		
 		//Creamos los jugadores del Real Madrid.
-		Jugador keylorNavas = new Jugador("Keylor Navas","Portero",30,"Costa Rica",20000000);
-		Jugador sergioRamos = new Jugador("Serio Ramos","Defensa",30,"España",40000000);
-		Jugador lukaModric = new Jugador("Luka Modric","Mediocentro",31,"Croacia",45000000);
-		Jugador cristianoRonaldo = new Jugador("Cristiano Ronaldo","Delantero",32,"Portugal",100000000);
+		Jugador keylorNavas = new Jugador("Keylor Navas","Real Madrid","Portero",30,"Costa Rica",20000000);
+		Jugador sergioRamos = new Jugador("Sergio Ramos","Real Madrid","Defensa",30,"España",40000000);
+		Jugador lukaModric = new Jugador("Luka Modric","Real Madrid","Mediocentro",31,"Croacia",45000000);
+		Jugador cristianoRonaldo = new Jugador("Cristiano Ronaldo","Real Madrid","Delantero",32,"Portugal",100000000);
 		
 		keylorNavas.setEquipo(realMadrid);
 		sergioRamos.setEquipo(realMadrid);
@@ -173,10 +177,10 @@ public class FutWorldController {
 		jugadorRepository.save(cristianoRonaldo);
 		
 		//Creamos los jugadores del Barcelona.
-		Jugador terStegen = new Jugador("Ter Stegen","Portero",24,"Alemania",22000000);
-		Jugador gerardPique = new Jugador("Gerard Pique","Defensa",30,"España",40000000);
-		Jugador andresIniesta = new Jugador("Andres Iniesta","Mediocentro",32,"España",30000000);
-		Jugador lionelMessi = new Jugador("Lionel Messi","Delantero",29,"Argentina",120000000);
+		Jugador terStegen = new Jugador("Ter Stegen","Barcelona","Portero",24,"Alemania",22000000);
+		Jugador gerardPique = new Jugador("Gerard Pique","Barcelona","Defensa",30,"España",40000000);
+		Jugador andresIniesta = new Jugador("Andres Iniesta","Barcelona","Mediocentro",32,"España",30000000);
+		Jugador lionelMessi = new Jugador("Lionel Messi","Barcelona","Delantero",29,"Argentina",120000000);
 		
 		terStegen.setEquipo(barcelona);
 		gerardPique.setEquipo(barcelona);
@@ -189,10 +193,10 @@ public class FutWorldController {
 		jugadorRepository.save(lionelMessi);
 		
 		//Creamos los jugadores del Atletico de Madrid.
-		Jugador janOblak = new Jugador("Jan Oblak","Portero",24,"Eslovenia",35000000);
-		Jugador diegoGodin = new Jugador("Diego Godin","Defensa",30,"Uruguay",40000000);
-		Jugador koke = new Jugador("Koke","Mediocentro",25,"España",55000000);
-		Jugador antoineGriezmann = new Jugador("Antoine Griezmann","Delantero",25,"Francia",80000000);
+		Jugador janOblak = new Jugador("Jan Oblak","Atletico de Madrid","Portero",24,"Eslovenia",35000000);
+		Jugador diegoGodin = new Jugador("Diego Godin","Atletico de Madrid","Defensa",30,"Uruguay",40000000);
+		Jugador koke = new Jugador("Koke","Atletico de Madrid","Mediocentro",25,"España",55000000);
+		Jugador antoineGriezmann = new Jugador("Antoine Griezmann","Atletico de Madrid","Delantero",25,"Francia",80000000);
 		
 		janOblak.setEquipo(atleticoMadrid);
 		diegoGodin.setEquipo(atleticoMadrid);
@@ -205,10 +209,10 @@ public class FutWorldController {
 		jugadorRepository.save(antoineGriezmann);		
 		
 		//Creamos los jugadores del Sevilla.
-		Jugador sergioRico = new Jugador("Sergio Rico","Portero",23,"Eslovenia",20000000);
-		Jugador adilRami = new Jugador("Adil Rami","Defensa",31,"Francia",7000000);
-		Jugador vicenteIborra = new Jugador("Vicente Iborra","Mediocentro",29,"España",9000000);
-		Jugador vitolo = new Jugador("Vitolo","Delantero",27,"España",20000000);
+		Jugador sergioRico = new Jugador("Sergio Rico","Sevilla","Portero",23,"Eslovenia",20000000);
+		Jugador adilRami = new Jugador("Adil Rami","Sevilla","Defensa",31,"Francia",7000000);
+		Jugador vicenteIborra = new Jugador("Vicente Iborra","Sevilla","Mediocentro",29,"España",9000000);
+		Jugador vitolo = new Jugador("Vitolo","Sevilla","Delantero",27,"España",20000000);
 		
 		sergioRico.setEquipo(sevilla);
 		adilRami.setEquipo(sevilla);
@@ -221,10 +225,10 @@ public class FutWorldController {
 		jugadorRepository.save(vitolo);		
 		
 		//Creamos los jugadores del Villarreal.
-		Jugador sergioAsenjo = new Jugador("Sergio Asenjo","Portero",27,"España",7500000);
-		Jugador mateoMusacchio = new Jugador("Mateo Musacchio","Defensa",26,"Argentina",15000000);
-		Jugador brunoSoriano = new Jugador("Bruno Soriano","Mediocentro",32,"España",8000000);
-		Jugador robertoSoldado = new Jugador("Roberto Soldado","Delantero",31,"España",14000000);
+		Jugador sergioAsenjo = new Jugador("Sergio Asenjo","Villarreal","Portero",27,"España",7500000);
+		Jugador mateoMusacchio = new Jugador("Mateo Musacchio","Villarreal","Defensa",26,"Argentina",15000000);
+		Jugador brunoSoriano = new Jugador("Bruno Soriano","Villarreal","Mediocentro",32,"España",8000000);
+		Jugador robertoSoldado = new Jugador("Roberto Soldado","Villarreal","Delantero",31,"España",14000000);
 		
 		sergioAsenjo.setEquipo(villarreal);
 		mateoMusacchio.setEquipo(villarreal);
@@ -237,10 +241,10 @@ public class FutWorldController {
 		jugadorRepository.save(robertoSoldado);	
 		
 		//Creamos los jugadores del Leganés.
-		Jugador iagoHerrerin = new Jugador("Iago Herrerín","Portero",29,"España",2500000);
-		Jugador martinMantovani = new Jugador("Martin Mantovani","Defensa",32,"Argentina",800000);
-		Jugador gabrielPires = new Jugador("Gabriel Pires","Mediocentro",23,"España",2500000);
-		Jugador albertoBueno = new Jugador("Alberto Bueno","Delantero",28,"España",3000000);
+		Jugador iagoHerrerin = new Jugador("Iago Herrerín","Leganes","Portero",29,"España",2500000);
+		Jugador martinMantovani = new Jugador("Martin Mantovani","Leganes","Defensa",32,"Argentina",800000);
+		Jugador gabrielPires = new Jugador("Gabriel Pires","Leganes","Mediocentro",23,"España",2500000);
+		Jugador albertoBueno = new Jugador("Alberto Bueno","Leganes","Delantero",28,"España",3000000);
 		
 		iagoHerrerin.setEquipo(leganes);
 		martinMantovani.setEquipo(leganes);
@@ -253,10 +257,10 @@ public class FutWorldController {
 		jugadorRepository.save(albertoBueno);
 		
 		//Creamos los jugadores del Chelsea.
-		Jugador thibautCourtois = new Jugador("Thibaut Courtois","Portero",24,"Belgica",35000000);
-		Jugador davidLuiz = new Jugador("David Luiz","Defensa",29,"Brasil",30000000);
-		Jugador cescFabregas = new Jugador("Cesc Fabregas","Mediocentro",29,"España",45000000);
-		Jugador diegoCosta = new Jugador("Diego Costa","Delantero",28,"España",45000000);
+		Jugador thibautCourtois = new Jugador("Thibaut Courtois","Chelsea","Portero",24,"Belgica",35000000);
+		Jugador davidLuiz = new Jugador("David Luiz","Chelsea","Defensa",29,"Brasil",30000000);
+		Jugador cescFabregas = new Jugador("Cesc Fabregas","Chelsea","Mediocentro",29,"España",45000000);
+		Jugador diegoCosta = new Jugador("Diego Costa","Chelsea","Delantero",28,"España",45000000);
 		
 		thibautCourtois.setEquipo(chelsea);
 		davidLuiz.setEquipo(chelsea);
@@ -269,10 +273,10 @@ public class FutWorldController {
 		jugadorRepository.save(diegoCosta);		
 		
 		//Creamos los jugadores del Arsenal.
-		Jugador petrCech = new Jugador("Petr Cech","Portero",34,"Republica Checa",12000000);
-		Jugador kieranGibbs = new Jugador("Kieran Gibbs","Defensa",27,"Inglaterra",13000000);
-		Jugador aaronRamsey = new Jugador("Aaron Ramsey","Mediocentro",26,"Gales",35000000);
-		Jugador olivierGiroud = new Jugador("Olivier Giroud","Delantero",30,"Francia",25000000);
+		Jugador petrCech = new Jugador("Petr Cech","Arsenal","Portero",34,"Republica Checa",12000000);
+		Jugador kieranGibbs = new Jugador("Kieran Gibbs","Arsenal","Defensa",27,"Inglaterra",13000000);
+		Jugador aaronRamsey = new Jugador("Aaron Ramsey","Arsenal","Mediocentro",26,"Gales",35000000);
+		Jugador olivierGiroud = new Jugador("Olivier Giroud","Arsenal","Delantero",30,"Francia",25000000);
 		
 		petrCech.setEquipo(arsenal);
 		kieranGibbs.setEquipo(arsenal);
@@ -285,10 +289,10 @@ public class FutWorldController {
 		jugadorRepository.save(olivierGiroud);	
 		
 		//Creamos los jugadores del Liverpool.
-		Jugador simonMignolet = new Jugador("Simon Mignolet","Portero",28,"Belgica",12000000);
-		Jugador joelMatip = new Jugador("Joel Matip","Defensa",25,"Alemania",18000000);
-		Jugador philippeCoutinho = new Jugador("Philippe Coutinho","Mediocentro",24,"Brasil",35000000);
-		Jugador danielSturridge = new Jugador("Daniel Sturridge","Delantero",27,"Inglaterra",25000000);
+		Jugador simonMignolet = new Jugador("Simon Mignolet","Liverpool","Portero",28,"Belgica",12000000);
+		Jugador joelMatip = new Jugador("Joel Matip","Liverpool","Defensa",25,"Alemania",18000000);
+		Jugador philippeCoutinho = new Jugador("Philippe Coutinho","Liverpool","Mediocentro",24,"Brasil",35000000);
+		Jugador danielSturridge = new Jugador("Daniel Sturridge","Liverpool","Delantero",27,"Inglaterra",25000000);
 		
 		simonMignolet.setEquipo(liverpool);
 		joelMatip.setEquipo(liverpool);
@@ -301,10 +305,10 @@ public class FutWorldController {
 		jugadorRepository.save(danielSturridge);		
 		
 		//Creamos los jugadores del Manchester United.
-		Jugador davidDeGea = new Jugador("David De Gea","Portero",26,"España",40000000);
-		Jugador ericBailly = new Jugador("Eric Bailly","Defensa",22,"Costa de Marfil",25000000);
-		Jugador paulPogba = new Jugador("Paul Pogba","Mediocentro",23,"Francia",80000000);
-		Jugador zlatanIbrahimovic = new Jugador("Zlatan Ibrahimovic","Delantero",35,"Suecia",12000000);
+		Jugador davidDeGea = new Jugador("David De Gea","Manchester United","Portero",26,"España",40000000);
+		Jugador ericBailly = new Jugador("Eric Bailly","Manchester United","Defensa",22,"Costa de Marfil",25000000);
+		Jugador paulPogba = new Jugador("Paul Pogba","Manchester United","Mediocentro",23,"Francia",80000000);
+		Jugador zlatanIbrahimovic = new Jugador("Zlatan Ibrahimovic","Manchester United","Delantero",35,"Suecia",12000000);
 		
 		davidDeGea.setEquipo(manchesterUnited);
 		ericBailly.setEquipo(manchesterUnited);
@@ -317,10 +321,10 @@ public class FutWorldController {
 		jugadorRepository.save(zlatanIbrahimovic);		
 		
 		//Creamos los jugadores del Manchester City.
-		Jugador claudioBravo = new Jugador("Claudio Bravo","Portero",33,"Chile",15000000);
-		Jugador johnStones = new Jugador("John Stones","Defensa",22,"Inglaterra",35000000);
-		Jugador yayaToure = new Jugador("Yaya Toure","Mediocentro",33,"Costa de Marfil",12000000);
-		Jugador sergioAguero = new Jugador("Sergio Aguero","Delantero",28,"Argentina",60000000);
+		Jugador claudioBravo = new Jugador("Claudio Bravo","Manchester City","Portero",33,"Chile",15000000);
+		Jugador johnStones = new Jugador("John Stones","Manchester City","Defensa",22,"Inglaterra",35000000);
+		Jugador yayaToure = new Jugador("Yaya Toure","Manchester City","Mediocentro",33,"Costa de Marfil",12000000);
+		Jugador sergioAguero = new Jugador("Sergio Aguero","Manchester City","Delantero",28,"Argentina",60000000);
 		
 		claudioBravo.setEquipo(manchesterCity);
 		johnStones.setEquipo(manchesterCity);
@@ -333,10 +337,10 @@ public class FutWorldController {
 		jugadorRepository.save(sergioAguero);		
 		
 		//Creamos los jugadores del Tottenham.
-		Jugador hugoLloris = new Jugador("Hugo Lloris","Portero",30,"Francia",24000000);
-		Jugador tobyAlderweireld = new Jugador("Toby Alderweireld","Defensa",27,"Belgica",27000000);
-		Jugador ericDier = new Jugador("Eric Dier","Mediocentro",23,"Inglaterra",18000000);
-		Jugador harryKane = new Jugador("Harry Kane","Delantero",23,"Inglaterra",40000000);
+		Jugador hugoLloris = new Jugador("Hugo Lloris","Tottenham","Portero",30,"Francia",24000000);
+		Jugador tobyAlderweireld = new Jugador("Toby Alderweireld","Tottenham","Defensa",27,"Belgica",27000000);
+		Jugador ericDier = new Jugador("Eric Dier","Tottenham","Mediocentro",23,"Inglaterra",18000000);
+		Jugador harryKane = new Jugador("Harry Kane","Tottenham","Delantero",23,"Inglaterra",40000000);
 		
 		hugoLloris.setEquipo(tottenham);
 		tobyAlderweireld.setEquipo(tottenham);
@@ -349,10 +353,10 @@ public class FutWorldController {
 		jugadorRepository.save(harryKane);
 		
 		//Creamos los jugadores del Juventus.
-		Jugador gianluigiBuffon = new Jugador("Gianluigi Buffon","Portero",39,"Italia",2000000);
-		Jugador leonardoBonucci = new Jugador("Leonardo Bonucci","Defensa",29,"Italia",40000000);
-		Jugador tomasRincon = new Jugador("Tomas Rincon","Mediocentro",29,"Venezuela",9000000);
-		Jugador gonzaloHiguain = new Jugador("Gonzalo Higuain","Delantero",29,"Argentina",75000000);
+		Jugador gianluigiBuffon = new Jugador("Gianluigi Buffon","Juventus","Portero",39,"Italia",2000000);
+		Jugador leonardoBonucci = new Jugador("Leonardo Bonucci","Juventus","Defensa",29,"Italia",40000000);
+		Jugador tomasRincon = new Jugador("Tomas Rincon","Juventus","Mediocentro",29,"Venezuela",9000000);
+		Jugador gonzaloHiguain = new Jugador("Gonzalo Higuain","Juventus","Delantero",29,"Argentina",75000000);
 		
 		gianluigiBuffon.setEquipo(juventus);
 		leonardoBonucci.setEquipo(juventus);
@@ -365,10 +369,10 @@ public class FutWorldController {
 		jugadorRepository.save(gonzaloHiguain);		
 		
 		//Creamos los jugadores del Milán.
-		Jugador gianluigiDonnarumma = new Jugador("Gianluigi Donnarumma","Portero",17,"Italia",20000000);
-		Jugador alessioRomagnoli = new Jugador("Alessio Romagnoli","Defensa",22,"Italia",25000000);
-		Jugador giacomoBonaventura = new Jugador("Giacomo Bonaventura","Mediocentro",27,"Italia",24000000);
-		Jugador carlosBacca = new Jugador("Carlos Bacca","Delantero",30,"Venezuela",23000000);
+		Jugador gianluigiDonnarumma = new Jugador("Gianluigi Donnarumma","Milan","Portero",17,"Italia",20000000);
+		Jugador alessioRomagnoli = new Jugador("Alessio Romagnoli","Milan","Defensa",22,"Italia",25000000);
+		Jugador giacomoBonaventura = new Jugador("Giacomo Bonaventura","Milan","Mediocentro",27,"Italia",24000000);
+		Jugador carlosBacca = new Jugador("Carlos Bacca","Milan","Delantero",30,"Venezuela",23000000);
 		
 		gianluigiDonnarumma.setEquipo(milan);
 		alessioRomagnoli.setEquipo(milan);
@@ -381,10 +385,10 @@ public class FutWorldController {
 		jugadorRepository.save(carlosBacca);	
 		
 		//Creamos los jugadores del Inter de Milán.
-		Jugador samirHandanovic = new Jugador("Samir Handanovic","Portero",32,"Eslovenia",12500000);
-		Jugador jeisonMurillo = new Jugador("Jeison Murillo","Defensa",24,"Venezuela",14000000);
-		Jugador marceloBrozovic = new Jugador("Marcelo Brozovic","Mediocentro",24,"Croacia",22000000);
-		Jugador mauroIcardi = new Jugador("Mauro Icardi","Delantero",23,"Argentina",45000000);
+		Jugador samirHandanovic = new Jugador("Samir Handanovic","Inter de Milan","Portero",32,"Eslovenia",12500000);
+		Jugador jeisonMurillo = new Jugador("Jeison Murillo","Inter de Milan","Defensa",24,"Venezuela",14000000);
+		Jugador marceloBrozovic = new Jugador("Marcelo Brozovic","Inter de Milan","Mediocentro",24,"Croacia",22000000);
+		Jugador mauroIcardi = new Jugador("Mauro Icardi","Inter de Milan","Delantero",23,"Argentina",45000000);
 		
 		samirHandanovic.setEquipo(interMilan);
 		jeisonMurillo.setEquipo(interMilan);
@@ -397,10 +401,10 @@ public class FutWorldController {
 		jugadorRepository.save(mauroIcardi);		
 		
 		//Creamos los jugadores del Roma.
-		Jugador wojciechSzczesny = new Jugador("Wojciech Szczesny","Portero",26,"Polonia",14000000);
-		Jugador konstantinosManolas = new Jugador("Konstantinos Manolas","Defensa",25,"Grecia",28000000);
-		Jugador radjaNainggolan = new Jugador("Radja Nainggolan","Mediocentro",28,"Belgica",35000000);
-		Jugador edinDzeko = new Jugador("Edin Dzeko","Delantero",30,"Bosnia",15000000);
+		Jugador wojciechSzczesny = new Jugador("Wojciech Szczesny","Roma","Portero",26,"Polonia",14000000);
+		Jugador konstantinosManolas = new Jugador("Konstantinos Manolas","Roma","Defensa",25,"Grecia",28000000);
+		Jugador radjaNainggolan = new Jugador("Radja Nainggolan","Roma","Mediocentro",28,"Belgica",35000000);
+		Jugador edinDzeko = new Jugador("Edin Dzeko","Roma","Delantero",30,"Bosnia",15000000);
 		
 		wojciechSzczesny.setEquipo(roma);
 		konstantinosManolas.setEquipo(roma);
@@ -413,10 +417,10 @@ public class FutWorldController {
 		jugadorRepository.save(edinDzeko);		
 		
 		//Creamos los jugadores del Nápoles.
-		Jugador pepeReina = new Jugador("Pepe Reina","Portero",34,"España",3000000);
-		Jugador kalidouKoulibaly = new Jugador("Kalidou Koulibaly","Defensa",25,"Francia",30000000);
-		Jugador marekHamsik = new Jugador("Marek Hamsik","Mediocentro",29,"Eslovaquia",40000000);
-		Jugador arkadiuszMilik = new Jugador("Arkadiusz Milik","Delantero",22,"Polonia",20000000);
+		Jugador pepeReina = new Jugador("Pepe Reina","Napoles","Portero",34,"España",3000000);
+		Jugador kalidouKoulibaly = new Jugador("Kalidou Koulibaly","Napoles","Defensa",25,"Francia",30000000);
+		Jugador marekHamsik = new Jugador("Marek Hamsik","Napoles","Mediocentro",29,"Eslovaquia",40000000);
+		Jugador arkadiuszMilik = new Jugador("Arkadiusz Milik","Napoles","Delantero",22,"Polonia",20000000);
 		
 		pepeReina.setEquipo(napoles);
 		kalidouKoulibaly.setEquipo(napoles);
@@ -429,10 +433,10 @@ public class FutWorldController {
 		jugadorRepository.save(arkadiuszMilik);
 		
 		//Creamos los jugadores del Bayern Munich.
-		Jugador manuelNeuer = new Jugador("Manuel Neuer","Portero",30,"Alemania",45000000);
-		Jugador philippLahm = new Jugador("Philipp Lahm","Defensa",33,"Alemania",11000000);
-		Jugador arturoVidal = new Jugador("Arturo Vidal","Mediocentro",29,"Chile",37000000);
-		Jugador robertLewandowski = new Jugador("Robert Lewandowski","Delantero",28,"Polonia",80000000);
+		Jugador manuelNeuer = new Jugador("Manuel Neuer","Bayern Munich","Portero",30,"Alemania",45000000);
+		Jugador philippLahm = new Jugador("Philipp Lahm","Bayern Munich","Defensa",33,"Alemania",11000000);
+		Jugador arturoVidal = new Jugador("Arturo Vidal","Bayern Munich","Mediocentro",29,"Chile",37000000);
+		Jugador robertLewandowski = new Jugador("Robert Lewandowski","Bayern Munich","Delantero",28,"Polonia",80000000);
 		
 		manuelNeuer.setEquipo(bayernMunich);
 		philippLahm.setEquipo(bayernMunich);
@@ -445,10 +449,10 @@ public class FutWorldController {
 		jugadorRepository.save(robertLewandowski);		
 		
 		//Creamos los jugadores del Borussia Dormund.
-		Jugador romanBurki = new Jugador("Roman Burki","Portero",26,"Suiza",7500000);
-		Jugador sokratis = new Jugador("Sokratis","Defensa",28,"Grecia",28000000);
-		Jugador julianWeigl = new Jugador("Julian Weigl","Mediocentro",21,"Alemania",23000000);
-		Jugador aubameyang = new Jugador("Aubameyang","Delantero",27,"Gabón",65000000);
+		Jugador romanBurki = new Jugador("Roman Burki","Borussia Dormund","Portero",26,"Suiza",7500000);
+		Jugador sokratis = new Jugador("Sokratis","Borussia Dormund","Defensa",28,"Grecia",28000000);
+		Jugador julianWeigl = new Jugador("Julian Weigl","Borussia Dormund","Mediocentro",21,"Alemania",23000000);
+		Jugador aubameyang = new Jugador("Aubameyang","Borussia Dormund","Delantero",27,"Gabón",65000000);
 		
 		romanBurki.setEquipo(borussiaDormund);
 		sokratis.setEquipo(borussiaDormund);
@@ -461,10 +465,10 @@ public class FutWorldController {
 		jugadorRepository.save(aubameyang);		
 		
 		//Creamos los jugadores del Bayer Leverkusen.
-		Jugador berndLeno = new Jugador("Bernd Leno","Portero",24,"Alemania",16000000);
-		Jugador jonathanTah = new Jugador("Jonathan Tah","Defensa",20,"Alemania",22000000);
-		Jugador larsBender = new Jugador("Lars Bender","Mediocentro",27,"Alemania",15000000);
-		Jugador chicharito = new Jugador("Chicharito","Delantero",29,"Mexico",22000000);
+		Jugador berndLeno = new Jugador("Bernd Leno","Bayer Leverkusen","Portero",24,"Alemania",16000000);
+		Jugador jonathanTah = new Jugador("Jonathan Tah","Bayer Leverkusen","Defensa",20,"Alemania",22000000);
+		Jugador larsBender = new Jugador("Lars Bender","Bayer Leverkusen","Mediocentro",27,"Alemania",15000000);
+		Jugador chicharito = new Jugador("Chicharito","Bayer Leverkusen","Delantero",29,"Mexico",22000000);
 		
 		berndLeno.setEquipo(bayerLeverkusen);
 		jonathanTah.setEquipo(bayerLeverkusen);
@@ -477,10 +481,10 @@ public class FutWorldController {
 		jugadorRepository.save(chicharito);
 		
 		//Creamos los jugadores del Shalke 04.
-		Jugador ralfFahrmann = new Jugador("Ralf Fahrmann","Portero",28,"Alemania",9000000);
-		Jugador benediktHowedes = new Jugador("Benedikt Howedes","Defensa",28,"Alemania",18000000);
-		Jugador leonGoretzka = new Jugador("Leon Goretzka","Mediocentro",22,"Alemania",18000000);
-		Jugador breelEmbolo = new Jugador("Breel Embolo","Delantero",19,"Suiza",20000000);
+		Jugador ralfFahrmann = new Jugador("Ralf Fahrmann","Shalke 04","Portero",28,"Alemania",9000000);
+		Jugador benediktHowedes = new Jugador("Benedikt Howedes","Shalke 04","Defensa",28,"Alemania",18000000);
+		Jugador leonGoretzka = new Jugador("Leon Goretzka","Shalke 04","Mediocentro",22,"Alemania",18000000);
+		Jugador breelEmbolo = new Jugador("Breel Embolo","Shalke 04","Delantero",19,"Suiza",20000000);
 		
 		ralfFahrmann.setEquipo(shalke);
 		benediktHowedes.setEquipo(shalke);
@@ -493,10 +497,10 @@ public class FutWorldController {
 		jugadorRepository.save(breelEmbolo);
 		
 		//Creamos los jugadores del PSG.
-		Jugador kevinTrapp = new Jugador("Kevin Trapp","Portero",26,"Alemania",10000000);
-		Jugador marquinhos = new Jugador("Marquinhos","Defensa",22,"Portugal",32000000);
-		Jugador marcoVeratti = new Jugador("Marco Verotti","Mediocentro",24,"Italia",40000000);
-		Jugador edisonCavani = new Jugador("Edison Cavani","Delantero",29,"Uruguay",45000000);
+		Jugador kevinTrapp = new Jugador("Kevin Trapp","PSG","Portero",26,"Alemania",10000000);
+		Jugador marquinhos = new Jugador("Marquinhos","PSG","Defensa",22,"Portugal",32000000);
+		Jugador marcoVeratti = new Jugador("Marco Verotti","PSG","Mediocentro",24,"Italia",40000000);
+		Jugador edisonCavani = new Jugador("Edison Cavani","PSG","Delantero",29,"Uruguay",45000000);
 		
 		kevinTrapp.setEquipo(psg);
 		marquinhos.setEquipo(psg);
@@ -509,10 +513,10 @@ public class FutWorldController {
 		jugadorRepository.save(edisonCavani);		
 		
 		//Creamos los jugadores del Mónaco.
-		Jugador danijelSubasic = new Jugador("Danijel Subasic","Portero",32,"Croacia",5000000);
-		Jugador kamilGlik = new Jugador("Kamil Glik","Defensa",29,"Polonia",15000000);
-		Jugador fabinho = new Jugador("Fabinho","Mediocentro",23,"Brasil",20000000);
-		Jugador falcao = new Jugador("Falcao","Delantero",31,"Colombia",15000000);
+		Jugador danijelSubasic = new Jugador("Danijel Subasic","Monaco","Portero",32,"Croacia",5000000);
+		Jugador kamilGlik = new Jugador("Kamil Glik","Monaco","Defensa",29,"Polonia",15000000);
+		Jugador fabinho = new Jugador("Fabinho","Monaco","Mediocentro",23,"Brasil",20000000);
+		Jugador falcao = new Jugador("Falcao","Monaco","Delantero",31,"Colombia",15000000);
 		
 		danijelSubasic.setEquipo(monaco);
 		kamilGlik.setEquipo(monaco);
@@ -525,10 +529,10 @@ public class FutWorldController {
 		jugadorRepository.save(falcao);		
 		
 		//Creamos los jugadores del Olympique de Lyon.
-		Jugador anthonyLopes = new Jugador("Anthony Lopes","Portero",26,"Portugal",14000000);
-		Jugador emanuelMammana = new Jugador("Emanuel Mammana","Defensa",21,"Argentina",6000000);
-		Jugador corentinTolisso = new Jugador("Corentin Tolisso","Mediocentro",22,"Francia",18000000);
-		Jugador alexandreLacazette = new Jugador("Alexandre Lacazette","Delantero",25,"Francia",40000000);
+		Jugador anthonyLopes = new Jugador("Anthony Lopes","Olymmpique de Lyon","Portero",26,"Portugal",14000000);
+		Jugador emanuelMammana = new Jugador("Emanuel Mammana","Olymmpique de Lyon","Defensa",21,"Argentina",6000000);
+		Jugador corentinTolisso = new Jugador("Corentin Tolisso","Olymmpique de Lyon","Mediocentro",22,"Francia",18000000);
+		Jugador alexandreLacazette = new Jugador("Alexandre Lacazette","Olymmpique de Lyon","Delantero",25,"Francia",40000000);
 		
 		anthonyLopes.setEquipo(olympiqueLyon);
 		emanuelMammana.setEquipo(olympiqueLyon);
@@ -541,10 +545,10 @@ public class FutWorldController {
 		jugadorRepository.save(alexandreLacazette);	
 		
 		//Creamos los jugadores del Olympique de Marsella.
-		Jugador yohannPele = new Jugador("Yohann Pele","Portero",34,"Francia",500000);
-		Jugador karimRekik = new Jugador("Karim Rekik","Defensa",22,"Holanda",3000000);
-		Jugador morganSanson = new Jugador("Morgan Sanson","Mediocentro",22,"Francia",10000000);
-		Jugador bafetimbiGomis = new Jugador("Bafetimbi Gomis","Delantero",31,"Francia",7000000);
+		Jugador yohannPele = new Jugador("Yohann Pele","Olymmpique de Marsella","Portero",34,"Francia",500000);
+		Jugador karimRekik = new Jugador("Karim Rekik","Olymmpique de Lyon","Defensa",22,"Holanda",3000000);
+		Jugador morganSanson = new Jugador("Morgan Sanson","Olymmpique de Lyon","Mediocentro",22,"Francia",10000000);
+		Jugador bafetimbiGomis = new Jugador("Bafetimbi Gomis","Olymmpique de Lyon","Delantero",31,"Francia",7000000);
 		
 		yohannPele.setEquipo(olympiqueMarsella);
 		karimRekik.setEquipo(olympiqueMarsella);
@@ -557,10 +561,10 @@ public class FutWorldController {
 		jugadorRepository.save(bafetimbiGomis);
 		
 		//Creamos los jugadores del Oporto.
-		Jugador ikerCasillas = new Jugador("Iker Casillas","Portero",35,"España",3000000);
-		Jugador ivanMarcano = new Jugador("Ivan Marcano","Defensa",29,"España",6000000);
-		Jugador hectorHerrera = new Jugador("Hector Herrera","Mediocentro",26,"Mexico",16000000);
-		Jugador andreSilva = new Jugador("Andre Silva","Delantero",21,"Portugal",10000000);
+		Jugador ikerCasillas = new Jugador("Iker Casillas","Oporto","Portero",35,"España",3000000);
+		Jugador ivanMarcano = new Jugador("Ivan Marcano","Oporto","Defensa",29,"España",6000000);
+		Jugador hectorHerrera = new Jugador("Hector Herrera","Oporto","Mediocentro",26,"Mexico",16000000);
+		Jugador andreSilva = new Jugador("Andre Silva","Oporto","Delantero",21,"Portugal",10000000);
 		
 		ikerCasillas.setEquipo(oporto);
 		ivanMarcano.setEquipo(oporto);
@@ -573,10 +577,10 @@ public class FutWorldController {
 		jugadorRepository.save(andreSilva);		
 		
 		//Creamos los jugadores del Benfica.
-		Jugador ederson = new Jugador("Ederson","Portero",23,"Brasil",7000000);
-		Jugador victorLindelof = new Jugador("Victor Lindelof","Defensa",22,"Suecia",12000000);
-		Jugador pizzi = new Jugador("Pizzi","Mediocentro",27,"Portugal",13000000);
-		Jugador raulJimenez = new Jugador("Raul Jimenez","Delantero",25,"Mexico",11000000);
+		Jugador ederson = new Jugador("Ederson","Benfica","Portero",23,"Brasil",7000000);
+		Jugador victorLindelof = new Jugador("Victor Lindelof","Benfica","Defensa",22,"Suecia",12000000);
+		Jugador pizzi = new Jugador("Pizzi","Benfica","Mediocentro",27,"Portugal",13000000);
+		Jugador raulJimenez = new Jugador("Raul Jimenez","Benfica","Delantero",25,"Mexico",11000000);
 		
 		ederson.setEquipo(benfica);
 		victorLindelof.setEquipo(benfica);
@@ -589,10 +593,10 @@ public class FutWorldController {
 		jugadorRepository.save(raulJimenez);	
 		
 		//Creamos los jugadores del Sporting de Lisboa.
-		Jugador ruiPatricio = new Jugador("Rui Patricio","Portero",28,"Portugal",16000000);
-		Jugador rubenSemedo = new Jugador("Ruben Semedo","Defensa",22,"Portugal",7000000);
-		Jugador williamCarvalho = new Jugador("William Carvalho","Mediocentro",24,"Portugal",30000000);
-		Jugador banDost = new Jugador("Ban Dost","Delantero",27,"Holanda",27000000);
+		Jugador ruiPatricio = new Jugador("Rui Patricio","Sporting Lisboa","Portero",28,"Portugal",16000000);
+		Jugador rubenSemedo = new Jugador("Ruben Semedo","Sporting Lisboa","Defensa",22,"Portugal",7000000);
+		Jugador williamCarvalho = new Jugador("William Carvalho","Sporting Lisboa","Mediocentro",24,"Portugal",30000000);
+		Jugador banDost = new Jugador("Ban Dost","Sporting Lisboa","Delantero",27,"Holanda",27000000);
 		
 		ruiPatricio.setEquipo(sportingLisboa);
 		rubenSemedo.setEquipo(sportingLisboa);
@@ -605,10 +609,10 @@ public class FutWorldController {
 		jugadorRepository.save(banDost);		
 		
 		//Creamos los jugadores del Sporting de Braga.
-		Jugador marafona = new Jugador("Marafona","Portero",29,"Portugal",2000000);
-		Jugador emilianoVelazquez = new Jugador("Emiliano Velazquez","Defensa",22,"Uruguay",1500000);
-		Jugador nikolaVukcevic = new Jugador("Nikola Vukcevic","Mediocentro",25,"Albania",3000000);
-		Jugador ahmedHassan = new Jugador("Ahmed Hassan","Delantero",23,"Egipto",4500000);
+		Jugador marafona = new Jugador("Marafona","Sporting Braga","Portero",29,"Portugal",2000000);
+		Jugador emilianoVelazquez = new Jugador("Emiliano Velazquez","Sporting Braga","Defensa",22,"Uruguay",1500000);
+		Jugador nikolaVukcevic = new Jugador("Nikola Vukcevic","Sporting Braga","Mediocentro",25,"Albania",3000000);
+		Jugador ahmedHassan = new Jugador("Ahmed Hassan","Sporting Braga","Delantero",23,"Egipto",4500000);
 		
 		marafona.setEquipo(sportingBraga);
 		emilianoVelazquez.setEquipo(sportingBraga);
@@ -743,4 +747,38 @@ public class FutWorldController {
 	public String principal (){
 		return "index";
 	}
+
+	//Buscar Jugador.
+	@GetMapping("/consultarjugador/nombreJugador")
+	public String verJugador(Model model, @RequestParam String nombreJugador){
+	
+		Jugador jugador = jugadorRepository.findByNombreJugador(nombreJugador);
+		
+		model.addAttribute("jugador", jugador);
+		
+		return "consultajugador";
+	}
+	
+	//Plantilla Equipo.
+	@GetMapping("/consultarequipo/equipoJugador")
+	public String verEquipo (Model model, @RequestParam String equipoJugador){
+		
+		List<Jugador> jugador = jugadorRepository.findDistinctJugadoresByEquipoJugador(equipoJugador);
+		
+		model.addAttribute("jugador", jugador);		
+		
+		return "consultaequipo";
+	}	
+	
+	//Torneo.
+	@GetMapping("/consultartorneo/liga")
+	public String verTorneo (Model model, @RequestParam String liga){
+		
+		List<Equipo> equipo = equipoRepository.findDistinctEquiposByLiga(liga);
+		
+		model.addAttribute("equipo", equipo);		
+		
+		return "consultatorneo";
+	}
+	
 }
