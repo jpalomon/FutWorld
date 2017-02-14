@@ -813,7 +813,7 @@ public class FutWorldController {
 		return "consultatorneo";
 	}
 	
-	//Registrar Mánager
+	//Registrar Mánager.
 	@PostMapping("/manager/nuevo")
 	public String registroManager (Manager manager){
 		managerRepository.save(manager);
@@ -831,7 +831,7 @@ public class FutWorldController {
 		return "consultardatosmanager";
 	}
 	
-	//Información Manager.
+	//Inscribir Equipo.
 	@GetMapping("/registrarequipo/user/password")
 	public String registrarEquipoManager(Model model, @RequestParam String user, @RequestParam String password){
 	
@@ -842,10 +842,29 @@ public class FutWorldController {
 		return "registrarequipo";
 	}
 	
-	//Registrar Mánager
+	//Registrar Equipo.
 	@PostMapping("/equipo/nuevo")
 	public String registroEquipo (Equipo equipo){
 		equipoRepository.save(equipo);
 		return "equiporegistrado";
 	}
+	
+	//Inscribir Jugador.
+	@GetMapping("/registrarjugador/user/password")
+	public String registrarJugadorManager(Model model, @RequestParam String user, @RequestParam String password){
+	
+		Manager manager = managerRepository.findByUserAndPassword(user,password);
+		
+		model.addAttribute("manager", manager);
+		
+		return "registrarjugador";
+	}
+	
+	//Registrar Jugador.
+	@PostMapping("/jugador/nuevo")
+	public String registroJugador (Jugador jugador){
+		jugadorRepository.save(jugador);
+		return "jugadorregistrado";
+	}
+	
 }
