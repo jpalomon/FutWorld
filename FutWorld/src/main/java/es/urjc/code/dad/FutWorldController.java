@@ -761,7 +761,7 @@ public class FutWorldController {
 	@GetMapping("/consultarequipo/equipoJugador")
 	public String verEquipo (Model model, @RequestParam String equipoJugador){
 		
-		List<Jugador> jugador = jugadorRepository.findDistinctJugadoresByEquipoJugador(equipoJugador);
+		List<Jugador> jugador = jugadorRepository.findDistinctJugadoresByEquipoJugadorOrderByValorMercadoDesc(equipoJugador);
 		
 		model.addAttribute("jugador", jugador);		
 		
@@ -772,7 +772,7 @@ public class FutWorldController {
 	@GetMapping("/consultaredadjugadores/edad")
 	public String verEdadJugadores (Model model, @RequestParam int edad){
 		
-		List<Jugador> jugador = jugadorRepository.findDistinctJugadoresByEdad(edad);
+		List<Jugador> jugador = jugadorRepository.findDistinctJugadoresByEdadOrderByValorMercadoDesc(edad);
 		
 		model.addAttribute("jugador", jugador);		
 		
@@ -783,7 +783,7 @@ public class FutWorldController {
 	@GetMapping("/consultarpaisjugadores/nacionalidadJugador")
 	public String verNacionalidadJugadores (Model model, @RequestParam String nacionalidadJugador){
 		
-		List<Jugador> jugador = jugadorRepository.findDistinctJugadoresByNacionalidadJugador(nacionalidadJugador);
+		List<Jugador> jugador = jugadorRepository.findDistinctJugadoresByNacionalidadJugadorOrderByValorMercadoDesc(nacionalidadJugador);
 		
 		model.addAttribute("jugador", jugador);		
 		
@@ -805,7 +805,7 @@ public class FutWorldController {
 	@GetMapping("/consultartorneo/liga")
 	public String verTorneo (Model model, @RequestParam String liga){
 		
-		List<Equipo> equipo = equipoRepository.findDistinctEquiposByLiga(liga);
+		List<Equipo> equipo = equipoRepository.findDistinctEquiposByLigaOrderByNombreEquipoAsc(liga);
 		
 		model.addAttribute("equipo", equipo);		
 		

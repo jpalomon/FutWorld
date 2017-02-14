@@ -8,8 +8,8 @@ public interface JugadorRepository extends JpaRepository <Jugador, Long>{
 
 	Jugador findByNombreJugador(String nombreJugador);
 	
-	List<Jugador> findDistinctJugadoresByEquipoJugador(String equipoJugador);
-	List<Jugador> findDistinctJugadoresByNacionalidadJugador(String nacionalidadJugador);
-	List<Jugador> findDistinctJugadoresByEdad(int edad);
+	List<Jugador> findDistinctJugadoresByEquipoJugadorOrderByValorMercadoDesc(String equipoJugador);
+	List<Jugador> findDistinctJugadoresByNacionalidadJugadorOrderByValorMercadoDesc(String nacionalidadJugador);
+	List<Jugador> findDistinctJugadoresByEdadOrderByValorMercadoDesc(int edad);
 
 }
