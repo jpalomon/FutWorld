@@ -29,7 +29,7 @@ public class Torneo {
 
 	public long getId() {
 		return id;
-	} 
+	}
 
 	public void setId(long id) {
 		this.id = id;
@@ -54,7 +54,6 @@ public class Torneo {
 	@Override
 	public String toString() {
 		return "Torneo [id=" + id + ", nombreLiga=" + nombreLiga + ", equipos=" + equipos + "]";
-	}	
-	
+	}
 	
 }
