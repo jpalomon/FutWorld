@@ -15,20 +15,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class FutWorldController {
 	
+	//Inyectamos los repositorios.
 	@Autowired
-	private TorneoRepository torneoRepository;
-	
+	private TorneoRepository torneoRepository;	
 	@Autowired
-	private EquipoRepository equipoRepository;
-	
+	private EquipoRepository equipoRepository;	
 	@Autowired
-	private JugadorRepository jugadorRepository;
-	
+	private JugadorRepository jugadorRepository;	
 	@Autowired
-	private ManagerRepository managerRepository;
-	
-//	private List<Equipo> equipos = new ArrayList<>();
-//	private List<Jugador> jugadores = new ArrayList<>();
+	private ManagerRepository managerRepository;	
+	@Autowired
+	private PalmaresRepository palmaresRepository;
 	
 	@PostConstruct 
 	//Indicamos los torneos, equipos y jugadores añadidos por defecto al ejecutarse el programa.
@@ -759,10 +756,10 @@ public class FutWorldController {
 	}
 	
 	//Buscar Plantilla Equipo.
-	@GetMapping("/consultarequipo/equipoJugador")
-	public String verEquipo (Model model, @RequestParam String equipoJugador){
+	@GetMapping("/consultarequipo/nombreEquipo")
+	public String verEquipo (Model model, @RequestParam String nombreEquipo){
 		
-		List<Jugador> jugador = jugadorRepository.findDistinctJugadoresByEquipoJugadorOrderByValorMercadoDesc(equipoJugador);
+		List<Jugador> jugador = jugadorRepository.findDistinctJugadoresByEquipoJugadorOrderByValorMercadoDesc(nombreEquipo);
 		
 		model.addAttribute("jugador", jugador);		
 		

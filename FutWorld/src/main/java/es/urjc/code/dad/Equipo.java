@@ -8,7 +8,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-// import javax.persistence.OneToOne;
 
 @Entity
 public class Equipo {
@@ -26,10 +25,6 @@ public class Equipo {
 	
 	@ManyToOne
 	private Palmares palmares;	
-	
-//	// **** Lo elimino porque es Unidireccional ahora y no Bidireccional. Está declarado en Manager sólo.
-//	@OneToOne(mappedBy="equipo")
-//	private Manager manager;
 	
 	@ManyToOne
 	private Torneo torneo;

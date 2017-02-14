@@ -2,7 +2,6 @@ package es.urjc.code.dad;
 
 import java.util.List;
 
-//import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,11 +20,6 @@ public class Manager {
 	private String user;
 	private String password;
 
-//  **** Quito "(cascade=CascadeType.ALL)" porque en lugar de ser Bidireccional es Unidireccional.
-//	**** (Lo he creado justo debajo el unireccional para dejar este por si acaso).
-//	@OneToOne(cascade=CascadeType.ALL)
-//	private Equipo equipo;
-	
 	@OneToOne
 	private Equipo equipo;
 	
