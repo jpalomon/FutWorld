@@ -1,10 +1,13 @@
 package es.urjc.code.dad;
 
+import java.util.List;
+
 //import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -25,6 +28,9 @@ public class Manager {
 	
 	@OneToOne
 	private Equipo equipo;
+	
+	@OneToMany
+	private List <Jugador> jugadores;
 	
 	public Manager(){
 	}
@@ -84,10 +90,18 @@ public class Manager {
 		this.equipo = equipo;
 	}
 
+	public List<Jugador> getJugadores() {
+		return jugadores;
+	}
+
+	public void setJugadores(List<Jugador> jugadores) {
+		this.jugadores = jugadores;
+	}
+
 	@Override
 	public String toString() {
 		return "Manager [id=" + id + ", nombreManager=" + nombreManager + ", equipoManager=" + equipoManager + ", user="
-				+ user + ", password=" + password + ", equipo=" + equipo + "]";
+				+ user + ", password=" + password + ", equipo=" + equipo + ", jugadores=" + jugadores + "]";
 	}
 
 }
