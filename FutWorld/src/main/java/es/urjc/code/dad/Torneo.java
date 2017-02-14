@@ -15,6 +15,7 @@ public class Torneo {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	private String nombreLiga;
+	private int numeroEquipos;
 	
 	@OneToMany(mappedBy= "torneo")
 	private List<Equipo> equipos;
@@ -22,9 +23,9 @@ public class Torneo {
 	public Torneo(){
 	}
 	
-	public Torneo (String nombreLiga, List<Equipo> equipos){
+	public Torneo (String nombreLiga, int numeroEquipos){
 		this.nombreLiga = nombreLiga;
-		this.equipos = equipos;
+		this.numeroEquipos = numeroEquipos;
 	}
 
 	public long getId() {
@@ -43,6 +44,14 @@ public class Torneo {
 		this.nombreLiga = nombreLiga;
 	}
 
+	public int getNumeroEquipos() {
+		return numeroEquipos;
+	}
+
+	public void setNumeroEquipos(int numeroEquipos) {
+		this.numeroEquipos = numeroEquipos;
+	}
+
 	public List<Equipo> getEquipos() {
 		return equipos;
 	}
@@ -53,7 +62,8 @@ public class Torneo {
 
 	@Override
 	public String toString() {
-		return "Torneo [id=" + id + ", nombreLiga=" + nombreLiga + ", equipos=" + equipos + "]";
+		return "Torneo [id=" + id + ", nombreLiga=" + nombreLiga + ", numeroEquipos=" + numeroEquipos + ", equipos="
+				+ equipos + "]";
 	}
 	
 }

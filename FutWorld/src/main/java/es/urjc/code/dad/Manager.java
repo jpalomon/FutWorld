@@ -1,6 +1,6 @@
 package es.urjc.code.dad;
 
-import javax.persistence.CascadeType;
+//import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,16 +16,20 @@ public class Manager {
 	private String nombreManager;
 	private String user;
 	private String password;
+
+//  **** Quito "(cascade=CascadeType.ALL)" porque en lugar de ser Bidireccional es Unidireccional.
+//	**** (Lo he creado justo debajo el unireccional para dejar este por si acaso).
+//	@OneToOne(cascade=CascadeType.ALL)
+//	private Equipo equipo;
 	
-	@OneToOne(cascade=CascadeType.ALL)
+	@OneToOne
 	private Equipo equipo;
 	
 	public Manager(){
 	}
 
-	public Manager(String nombreManager, Equipo equipo, String user, String password) {
+	public Manager(String nombreManager, String user, String password) {
 		this.nombreManager = nombreManager;
-		this.equipo = equipo;
 		this.user = user;
 		this.password = password;
 	}

@@ -8,7 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+// import javax.persistence.OneToOne;
 
 @Entity
 public class Equipo {
@@ -26,8 +26,9 @@ public class Equipo {
 	@ManyToOne
 	private Palmares palmares;	
 	
-	@OneToOne(mappedBy="equipo")
-	private Manager manager;
+//	// **** Lo elimino porque es Unidireccional ahora y no Bidireccional. Está declarado en Manager sólo.
+//	@OneToOne(mappedBy="equipo")
+//	private Manager manager;
 	
 	@ManyToOne
 	private Torneo torneo;
@@ -35,11 +36,8 @@ public class Equipo {
 	public Equipo(){
 	}
 	
-	public Equipo (String nombreEquipo,List<Jugador> jugadores,Torneo torneo ,Palmares palmares, String nacionalidadEquipo, int numTorneoGanados){
+	public Equipo (String nombreEquipo, String nacionalidadEquipo, int numTorneoGanados){
 		this.nombreEquipo = nombreEquipo;
-		this.jugadores = jugadores;
-		this.torneo = torneo;
-		this.palmares = palmares;
 		this.nacionalidadEquipo = nacionalidadEquipo;
 		this.numTorneoGanados = numTorneoGanados;		
 	}
@@ -92,13 +90,14 @@ public class Equipo {
 		this.palmares = palmares;
 	}
 
-	public Manager getManager() {
-		return manager;
-	}
-
-	public void setManager(Manager manager) {
-		this.manager = manager;
-	}
+//	// **** Lo eliminos porque es Unidireccional ahora y no Bidireccional. No lo necesitamos en esta clase ahora.
+//	public Manager getManager() {
+//		return manager;
+//	}
+//
+//	public void setManager(Manager manager) {
+//		this.manager = manager;
+//	}
 
 	public Torneo getTorneo() {
 		return torneo;
@@ -107,12 +106,21 @@ public class Equipo {
 	public void setTorneo(Torneo torneo) {
 		this.torneo = torneo;
 	}
-
+	
+	//Unidireccional
 	@Override
 	public String toString() {
 		return "Equipo [id=" + id + ", nombreEquipo=" + nombreEquipo + ", nacionalidadEquipo=" + nacionalidadEquipo
 				+ ", numTorneoGanados=" + numTorneoGanados + ", jugadores=" + jugadores + ", palmares=" + palmares
-				+ ", manager=" + manager + ", torneo=" + torneo + "]";
+				+ ", torneo=" + torneo + "]";
 	}
+
+//	//**** Bidireccional
+//	@Override
+//	public String toString() {
+//		return "Equipo [id=" + id + ", nombreEquipo=" + nombreEquipo + ", nacionalidadEquipo=" + nacionalidadEquipo
+//				+ ", numTorneoGanados=" + numTorneoGanados + ", jugadores=" + jugadores + ", palmares=" + palmares
+//				+ ", manager=" + manager + ", torneo=" + torneo + "]";
+//	}
 
 }
