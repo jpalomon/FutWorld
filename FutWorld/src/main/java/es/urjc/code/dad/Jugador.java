@@ -40,20 +40,12 @@ public class Jugador {
 		this.id = id;
 	}
 
-	public String getNombre() {
+	public String getNombreJugador() {
 		return nombreJugador;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombreJugador = nombre;
-	}
-
-	public Equipo getEquipo() {
-		return equipo;
-	}
-
-	public void setEquipo(Equipo equipo) {
-		this.equipo = equipo;
+	public void setNombreJugador(String nombreJugador) {
+		this.nombreJugador = nombreJugador;
 	}
 
 	public int getEdad() {
@@ -64,12 +56,12 @@ public class Jugador {
 		this.edad = edad;
 	}
 
-	public String getNacionalidad() {
+	public String getNacionalidadJugador() {
 		return nacionalidadJugador;
 	}
 
-	public void setNacionalidad(String nacionalidad) {
-		this.nacionalidadJugador = nacionalidad;
+	public void setNacionalidadJugador(String nacionalidadJugador) {
+		this.nacionalidadJugador = nacionalidadJugador;
 	}
 
 	public long getValorMercado() {
@@ -79,10 +71,19 @@ public class Jugador {
 	public void setValorMercado(long valorMercado) {
 		this.valorMercado = valorMercado;
 	}
-	
+
+	public Equipo getEquipo() {
+		return equipo;
+	}
+
+	public void setEquipo(Equipo equipo) {
+		this.equipo = equipo;
+	}
+
 	@Override
 	public String toString() {
-		return "Jugador [id=" + id + ", nombre=" + nombreJugador + ", equipo=" + equipo + ", edad=" + edad + ", nacionalidad="
-				+ nacionalidadJugador + ", valorMercado=" + valorMercado + "]";
+		return "Jugador [id=" + id + ", nombreJugador=" + nombreJugador + ", edad=" + edad + ", nacionalidadJugador="
+				+ nacionalidadJugador + ", valorMercado=" + valorMercado + ", equipo=" + equipo + "]";
 	}
+
 }

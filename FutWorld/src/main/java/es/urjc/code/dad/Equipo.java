@@ -52,20 +52,20 @@ public class Equipo {
 		this.id = id;
 	}
 
-	public String getNombre() {
+	public String getNombreEquipo() {
 		return nombreEquipo;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombreEquipo = nombre;
+	public void setNombreEquipo(String nombreEquipo) {
+		this.nombreEquipo = nombreEquipo;
 	}
 
-	public String getNacionalidad() {
+	public String getNacionalidadEquipo() {
 		return nacionalidadEquipo;
 	}
 
-	public void setNacionalidad(String nacionalidad) {
-		this.nacionalidadEquipo = nacionalidad;
+	public void setNacionalidadEquipo(String nacionalidadEquipo) {
+		this.nacionalidadEquipo = nacionalidadEquipo;
 	}
 
 	public int getNumTorneoGanados() {
@@ -110,9 +110,9 @@ public class Equipo {
 
 	@Override
 	public String toString() {
-		return "Equipo [id=" + id + ", nombre=" + nombreEquipo + ", nacionalidad=" + nacionalidadEquipo + ", numTorneoGanados="
-				+ numTorneoGanados + ", jugadores=" + jugadores + ", palmares=" + palmares + ", manager=" + manager
-				+ ", torneo=" + torneo + "]";
+		return "Equipo [id=" + id + ", nombreEquipo=" + nombreEquipo + ", nacionalidadEquipo=" + nacionalidadEquipo
+				+ ", numTorneoGanados=" + numTorneoGanados + ", jugadores=" + jugadores + ", palmares=" + palmares
+				+ ", manager=" + manager + ", torneo=" + torneo + "]";
 	}
 
 }

@@ -38,20 +38,12 @@ public class Manager {
 		this.id = id;
 	}
 
-	public String getNombre() {
+	public String getNombreManager() {
 		return nombreManager;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombreManager = nombre;
-	}
-
-	public Equipo getEquipo() {
-		return equipo;
-	}
-
-	public void setEquipo(Equipo equipo) {
-		this.equipo = equipo;
+	public void setNombreManager(String nombreManager) {
+		this.nombreManager = nombreManager;
 	}
 
 	public String getUser() {
@@ -70,10 +62,18 @@ public class Manager {
 		this.password = password;
 	}
 
+	public Equipo getEquipo() {
+		return equipo;
+	}
+
+	public void setEquipo(Equipo equipo) {
+		this.equipo = equipo;
+	}
+
 	@Override
 	public String toString() {
-		return "Manager [id=" + id + ", nombre=" + nombreManager + ", user=" + user + ", password=" + password + ", equipo="
-				+ equipo + "]";
+		return "Manager [id=" + id + ", nombreManager=" + nombreManager + ", user=" + user + ", password=" + password
+				+ ", equipo=" + equipo + "]";
 	}
-	
+
 }
