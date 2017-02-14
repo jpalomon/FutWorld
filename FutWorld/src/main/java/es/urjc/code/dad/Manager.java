@@ -14,6 +14,7 @@ public class Manager {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	private String nombreManager;
+	private String equipoManager;
 	private String user;
 	private String password;
 
@@ -28,8 +29,9 @@ public class Manager {
 	public Manager(){
 	}
 
-	public Manager(String nombreManager, String user, String password) {
+	public Manager(String nombreManager, String equipoManager, String user, String password) {
 		this.nombreManager = nombreManager;
+		this.equipoManager = equipoManager;
 		this.user = user;
 		this.password = password;
 	}
@@ -48,6 +50,14 @@ public class Manager {
 
 	public void setNombreManager(String nombreManager) {
 		this.nombreManager = nombreManager;
+	}
+
+	public String getEquipoManager() {
+		return equipoManager;
+	}
+
+	public void setEquipoManager(String equipoManager) {
+		this.equipoManager = equipoManager;
 	}
 
 	public String getUser() {
@@ -76,8 +86,8 @@ public class Manager {
 
 	@Override
 	public String toString() {
-		return "Manager [id=" + id + ", nombreManager=" + nombreManager + ", user=" + user + ", password=" + password
-				+ ", equipo=" + equipo + "]";
+		return "Manager [id=" + id + ", nombreManager=" + nombreManager + ", equipoManager=" + equipoManager + ", user="
+				+ user + ", password=" + password + ", equipo=" + equipo + "]";
 	}
 
 }

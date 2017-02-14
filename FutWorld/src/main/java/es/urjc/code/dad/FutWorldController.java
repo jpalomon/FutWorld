@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -623,119 +624,119 @@ public class FutWorldController {
 		jugadorRepository.save(ahmedHassan);
 		
 		//Creamos los managers de los equipos.
-		Manager zinedineZidane = new Manager("Zinedine Zidane","ZineZid","remadr");
+		Manager zinedineZidane = new Manager("Zinedine Zidane","Real Madrid","ZineZid","remadr");
 		zinedineZidane.setEquipo(realMadrid);
 		managerRepository.save(zinedineZidane);
 		
-		Manager luisEnrique = new Manager("Luis Enrique","LuEnr","fcbarc");
+		Manager luisEnrique = new Manager("Luis Enrique","Barcelona","LuEnr","fcbarc");
 		luisEnrique.setEquipo(barcelona);
 		managerRepository.save(luisEnrique);
 		
-		Manager diegoSimeone = new Manager("Diego Simeone","DieSim","atmad");
+		Manager diegoSimeone = new Manager("Diego Simeone","Atletico de Madrid","DieSim","atmad");
 		diegoSimeone.setEquipo(atleticoMadrid);
 		managerRepository.save(diegoSimeone);
 		
-		Manager jorgeSampaoli = new Manager("Jorge Sampaoli","JorSamp","sevfc");
+		Manager jorgeSampaoli = new Manager("Jorge Sampaoli","Sevilla","JorSamp","sevfc");
 		jorgeSampaoli.setEquipo(sevilla);
 		managerRepository.save(jorgeSampaoli);
 		
-		Manager franEscriba = new Manager("Fran Escriba","FrEscr","villafc");
+		Manager franEscriba = new Manager("Fran Escriba","Villarreal","FrEscr","villafc");
 		franEscriba.setEquipo(villarreal);
 		managerRepository.save(franEscriba);
 		
-		Manager asierGaritano = new Manager("Asier Garitano","AsGari","cdleg");
+		Manager asierGaritano = new Manager("Asier Garitano","Leganes","AsGari","cdleg");
 		asierGaritano.setEquipo(leganes);
 		managerRepository.save(asierGaritano);
 		
-		Manager antonioConte = new Manager("Antonio Conte","AntCon","chel");
+		Manager antonioConte = new Manager("Antonio Conte","Chelsea","AntCon","chel");
 		antonioConte.setEquipo(chelsea);
 		managerRepository.save(antonioConte);		
 
-		Manager arseneWenger = new Manager("Arsene Wenger","ArWeng","arsn");
+		Manager arseneWenger = new Manager("Arsene Wenger","Arsenal","ArWeng","arsn");
 		arseneWenger.setEquipo(arsenal);
 		managerRepository.save(arseneWenger);
 		
-		Manager jurgenKlopp = new Manager("Jurgen Klopp","JuKlo","livfc");
+		Manager jurgenKlopp = new Manager("Jurgen Klopp","Liverpool","JuKlo","livfc");
 		jurgenKlopp.setEquipo(liverpool);
 		managerRepository.save(jurgenKlopp);
 		
-		Manager joseMourinho = new Manager("Jose Mourinho","JoMou","manu");
+		Manager joseMourinho = new Manager("Jose Mourinho","Manchester United","JoMou","manu");
 		joseMourinho.setEquipo(manchesterUnited);
 		managerRepository.save(joseMourinho);
 
-		Manager pepGuardiola = new Manager("Pep Guardiola","PeGuar","manc");
+		Manager pepGuardiola = new Manager("Pep Guardiola","Manchester City","PeGuar","manc");
 		pepGuardiola.setEquipo(manchesterCity);
 		managerRepository.save(pepGuardiola);
 		
-		Manager mauricioPochettino = new Manager("Mauricio Pochettino","MauPoch","totten");
+		Manager mauricioPochettino = new Manager("Mauricio Pochettino","Tottenham","MauPoch","totten");
 		mauricioPochettino.setEquipo(tottenham);
 		managerRepository.save(mauricioPochettino);
 		
-		Manager massimilianoAllegri = new Manager("Massimiliano Allegri","MasAlle","juvfc");
+		Manager massimilianoAllegri = new Manager("Massimiliano Allegri","Juventus","MasAlle","juvfc");
 		massimilianoAllegri.setEquipo(juventus);
 		managerRepository.save(massimilianoAllegri);		
 		
-		Manager vicenzoMontella = new Manager("Vicenzo Montella","VicMon","acmil");
+		Manager vicenzoMontella = new Manager("Vicenzo Montella","Milan","VicMon","acmil");
 		vicenzoMontella.setEquipo(milan);
 		managerRepository.save(vicenzoMontella);
 		
-		Manager stefanoPioli = new Manager("Stefano Pioli","StePio","intmil");
+		Manager stefanoPioli = new Manager("Stefano Pioli","Inter de Milan","StePio","intmil");
 		stefanoPioli.setEquipo(interMilan);
 		managerRepository.save(stefanoPioli);
 		
-		Manager lucianoSpalletti = new Manager("Luciano Spalletti","LucSpa","asrom");
+		Manager lucianoSpalletti = new Manager("Luciano Spalletti","Roma","LucSpa","asrom");
 		lucianoSpalletti.setEquipo(roma);
 		managerRepository.save(lucianoSpalletti);
 		
-		Manager maurizioSarri = new Manager("Maurizio Sarri","MauSar","sscnap");
+		Manager maurizioSarri = new Manager("Maurizio Sarri","Napoles","MauSar","sscnap");
 		maurizioSarri.setEquipo(napoles);
 		managerRepository.save(maurizioSarri);
 		
-		Manager carloAncelotti = new Manager("Carlo Ancelotti","CarAnc","fcbaym");
+		Manager carloAncelotti = new Manager("Carlo Ancelotti","Bayern Munich","CarAnc","fcbaym");
 		carloAncelotti.setEquipo(bayernMunich);
 		managerRepository.save(carloAncelotti);
 		
-		Manager thomasTuchel = new Manager("Thomas Tuchel","TomTuc","bordor");
+		Manager thomasTuchel = new Manager("Thomas Tuchel","Borussia Dormund","TomTuc","bordor");
 		thomasTuchel.setEquipo(borussiaDormund);
 		managerRepository.save(thomasTuchel);
 		
-		Manager rogerSchmidt = new Manager("Roger Schmidt","RogSch","baylev");
+		Manager rogerSchmidt = new Manager("Roger Schmidt","Bayer Leverkusen","RogSch","baylev");
 		rogerSchmidt.setEquipo(bayerLeverkusen);
 		managerRepository.save(rogerSchmidt);
 		
-		Manager markusWeinzierl = new Manager("Markus Weinzierl","MarWein","fcshal");
+		Manager markusWeinzierl = new Manager("Markus Weinzierl","Shalke 04","MarWein","fcshal");
 		markusWeinzierl.setEquipo(shalke);
 		managerRepository.save(markusWeinzierl);
 		
-		Manager unaiEmery = new Manager("Unai Emery","UnEme","fcpsg");
+		Manager unaiEmery = new Manager("Unai Emery","PSG","UnEme","fcpsg");
 		unaiEmery.setEquipo(psg);
 		managerRepository.save(unaiEmery);
 		
-		Manager leonardoJardim = new Manager("Leonardo Jardim","LeoJar","asmon");
+		Manager leonardoJardim = new Manager("Leonardo Jardim","Monaco","LeoJar","asmon");
 		leonardoJardim.setEquipo(monaco);
 		managerRepository.save(leonardoJardim);
 		
-		Manager brunoGenesio = new Manager("Bruno Genesio","BruGen","olylyo");
+		Manager brunoGenesio = new Manager("Bruno Genesio","Olympique de Lyon","BruGen","olylyo");
 		brunoGenesio.setEquipo(olympiqueLyon);
 		managerRepository.save(brunoGenesio);
 		
-		Manager rudiGarcia = new Manager("Rudi Garcia","RudGar","olymar");
+		Manager rudiGarcia = new Manager("Rudi Garcia","Olympique de Marsella","RudGar","olymar");
 		rudiGarcia.setEquipo(olympiqueMarsella);
 		managerRepository.save(rudiGarcia);
 		
-		Manager nunoEspiritoSanto = new Manager("Nuno Espirito Santo","NunEspS","fcopo");
+		Manager nunoEspiritoSanto = new Manager("Nuno Espirito Santo","Oporto","NunEspS","fcopo");
 		nunoEspiritoSanto.setEquipo(oporto);
 		managerRepository.save(nunoEspiritoSanto);
 		
-		Manager ruiVitoria = new Manager("Rui Vitoria","RuVit","slbenf");
+		Manager ruiVitoria = new Manager("Rui Vitoria","Benfica","RuVit","slbenf");
 		ruiVitoria.setEquipo(benfica);
 		managerRepository.save(ruiVitoria);
 		
-		Manager jorgeJesus = new Manager("Jorge Jesus","JorJes","splisb");
+		Manager jorgeJesus = new Manager("Jorge Jesus","Sporting Lisboa","JorJes","splisb");
 		jorgeJesus.setEquipo(sportingLisboa);
 		managerRepository.save(jorgeJesus);
 		
-		Manager jorgeSimao = new Manager("Jorge Simao","JorSim","scbra");
+		Manager jorgeSimao = new Manager("Jorge Simao","Sporting Braga","JorSim","scbra");
 		jorgeSimao.setEquipo(sportingBraga);
 		managerRepository.save(jorgeSimao);		
 	}
@@ -810,6 +811,13 @@ public class FutWorldController {
 		model.addAttribute("equipo", equipo);		
 		
 		return "consultatorneo";
+	}
+	
+	//Registrar Usuario
+	@PostMapping("/manager/nuevo")
+	public String RegistroManager (Manager manager){
+		managerRepository.save(manager);
+		return "managerregistrado";
 	}
 	
 }
