@@ -1,19 +1,30 @@
 package es.urjc.code.dad;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+
+@Entity
 public class Manager {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
-	private String nombre;
-	private Equipo equipo;
+	private String nombreManager;
 	private String user;
 	private String password;
 	
+	@OneToOne(cascade=CascadeType.ALL)
+	private Equipo equipo;
+	
 	public Manager(){
-		id = 0;
 	}
 
-	public Manager(String nombre, Equipo equipo, String user, String password) {
-		this.nombre = nombre;
+	public Manager(String nombreManager, Equipo equipo, String user, String password) {
+		this.nombreManager = nombreManager;
 		this.equipo = equipo;
 		this.user = user;
 		this.password = password;
@@ -27,20 +38,12 @@ public class Manager {
 		this.id = id;
 	}
 
-	public String getNombre() {
-		return nombre;
+	public String getNombreManager() {
+		return nombreManager;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-	public Equipo getEquipo() {
-		return equipo;
-	}
-
-	public void setEquipo(Equipo equipo) {
-		this.equipo = equipo;
+	public void setNombreManager(String nombreManager) {
+		this.nombreManager = nombreManager;
 	}
 
 	public String getUser() {
@@ -58,5 +61,19 @@ public class Manager {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+
+	public Equipo getEquipo() {
+		return equipo;
+	}
+
+	public void setEquipo(Equipo equipo) {
+		this.equipo = equipo;
+	}
+
+	@Override
+	public String toString() {
+		return "Manager [id=" + id + ", nombreManager=" + nombreManager + ", user=" + user + ", password=" + password
+				+ ", equipo=" + equipo + "]";
+	}
+
 }

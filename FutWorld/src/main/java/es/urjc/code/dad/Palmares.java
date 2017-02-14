@@ -1,18 +1,28 @@
 package es.urjc.code.dad;
 
+import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+@Entity
 public class Palmares {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
-	private Torneo torneo;
-	private int numTorneoGanados;
+	
+	@OneToMany(mappedBy="palmares")
+	private List<Equipo> equipos;
 	
 	public Palmares(){
-		id = 0;
 	}
 
-	public Palmares(Torneo torneo, int numTorneoGanados) {
-		this.torneo = torneo;
-		this.numTorneoGanados = numTorneoGanados;
+	public Palmares(List<Equipo> equipos) {
+		this.equipos = equipos;
 	}
 
 	public long getId() {
@@ -23,21 +33,17 @@ public class Palmares {
 		this.id = id;
 	}
 
-	public Torneo getTorneo() {
-		return torneo;
+	public List<Equipo> getEquipos() {
+		return equipos;
 	}
 
-	public void setTorneo(Torneo torneo) {
-		this.torneo = torneo;
+	public void setEquipos(List<Equipo> equipos) {
+		this.equipos = equipos;
 	}
 
-	public int getNumTorneoGanados() {
-		return numTorneoGanados;
+	@Override
+	public String toString() {
+		return "Palmares [id=" + id + ", equipos=" + equipos + "]";
 	}
-
-	public void setNumTorneoGanados(int numTorneoGanados) {
-		this.numTorneoGanados = numTorneoGanados;
-	}
-	
 	
 }
