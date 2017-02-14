@@ -1,6 +1,5 @@
 package es.urjc.code.dad;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -9,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -791,6 +789,17 @@ public class FutWorldController {
 		
 		return "consultanacionalidadjugadores";
 	}
+	
+	//Palmarés.
+	@GetMapping("/consultarpalmares/liga")
+	public String verPalmares (Model model, @RequestParam String liga){
+		
+		List<Equipo> equipo = equipoRepository.findDistinctEquiposByLigaOrderByNumTorneoGanadosDesc(liga);
+		
+		model.addAttribute("equipo", equipo);		
+		
+		return "consultapalmares";
+	}	
 	
 	//Buscar Torneo.
 	@GetMapping("/consultartorneo/liga")
