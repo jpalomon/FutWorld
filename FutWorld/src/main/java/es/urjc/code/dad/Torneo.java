@@ -65,5 +65,5 @@ public class Torneo {
 		return "Torneo [id=" + id + ", nombreLiga=" + nombreLiga + ", numeroEquipos=" + numeroEquipos + ", equipos="
 				+ equipos + "]";
 	}
-	
+
 }

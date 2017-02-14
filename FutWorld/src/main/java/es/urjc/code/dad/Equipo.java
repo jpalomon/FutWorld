@@ -17,6 +17,7 @@ public class Equipo {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	private String nombreEquipo;
+	private String liga;
 	private String nacionalidadEquipo;
 	private int numTorneoGanados;
 	
@@ -36,8 +37,9 @@ public class Equipo {
 	public Equipo(){
 	}
 	
-	public Equipo (String nombreEquipo, String nacionalidadEquipo, int numTorneoGanados){
+	public Equipo (String nombreEquipo, String liga, String nacionalidadEquipo, int numTorneoGanados){
 		this.nombreEquipo = nombreEquipo;
+		this.liga = liga;
 		this.nacionalidadEquipo = nacionalidadEquipo;
 		this.numTorneoGanados = numTorneoGanados;		
 	}
@@ -56,6 +58,14 @@ public class Equipo {
 
 	public void setNombreEquipo(String nombreEquipo) {
 		this.nombreEquipo = nombreEquipo;
+	}
+
+	public String getLiga() {
+		return liga;
+	}
+
+	public void setLiga(String liga) {
+		this.liga = liga;
 	}
 
 	public String getNacionalidadEquipo() {
@@ -90,15 +100,6 @@ public class Equipo {
 		this.palmares = palmares;
 	}
 
-//	// **** Lo eliminos porque es Unidireccional ahora y no Bidireccional. No lo necesitamos en esta clase ahora.
-//	public Manager getManager() {
-//		return manager;
-//	}
-//
-//	public void setManager(Manager manager) {
-//		this.manager = manager;
-//	}
-
 	public Torneo getTorneo() {
 		return torneo;
 	}
@@ -106,21 +107,13 @@ public class Equipo {
 	public void setTorneo(Torneo torneo) {
 		this.torneo = torneo;
 	}
-	
-	//Unidireccional
+
 	@Override
 	public String toString() {
-		return "Equipo [id=" + id + ", nombreEquipo=" + nombreEquipo + ", nacionalidadEquipo=" + nacionalidadEquipo
-				+ ", numTorneoGanados=" + numTorneoGanados + ", jugadores=" + jugadores + ", palmares=" + palmares
-				+ ", torneo=" + torneo + "]";
+		return "Equipo [id=" + id + ", nombreEquipo=" + nombreEquipo + ", liga=" + liga + ", nacionalidadEquipo="
+				+ nacionalidadEquipo + ", numTorneoGanados=" + numTorneoGanados + ", jugadores=" + jugadores
+				+ ", palmares=" + palmares + ", torneo=" + torneo + "]";
 	}
 
-//	//**** Bidireccional
-//	@Override
-//	public String toString() {
-//		return "Equipo [id=" + id + ", nombreEquipo=" + nombreEquipo + ", nacionalidadEquipo=" + nacionalidadEquipo
-//				+ ", numTorneoGanados=" + numTorneoGanados + ", jugadores=" + jugadores + ", palmares=" + palmares
-//				+ ", manager=" + manager + ", torneo=" + torneo + "]";
-//	}
 
 }
