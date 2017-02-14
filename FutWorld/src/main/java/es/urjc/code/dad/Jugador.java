@@ -13,6 +13,8 @@ public class Jugador {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	private String nombreJugador;
+	private String equipoJugador;
+	private String posicion;
 	private int edad;
 	private String nacionalidadJugador;
 	private long valorMercado;
@@ -24,9 +26,10 @@ public class Jugador {
 		
 	}
 	
-	public Jugador (String nombreJugador,Equipo equipo, int edad, String nacionalidadJugador, long valorMercado){
+	public Jugador (String nombreJugador, String equipoJugador, String posicion, int edad, String nacionalidadJugador, long valorMercado){
 		this.nombreJugador = nombreJugador;
-		this.equipo = equipo;
+		this.equipoJugador = equipoJugador;
+		this.posicion = posicion;
 		this.edad = edad;
 		this.nacionalidadJugador = nacionalidadJugador;
 		this.valorMercado = valorMercado;
@@ -46,6 +49,22 @@ public class Jugador {
 
 	public void setNombreJugador(String nombreJugador) {
 		this.nombreJugador = nombreJugador;
+	}
+
+	public String getEquipoJugador() {
+		return equipoJugador;
+	}
+
+	public void setEquipoJugador(String equipoJugador) {
+		this.equipoJugador = equipoJugador;
+	}
+
+	public String getPosicion() {
+		return posicion;
+	}
+
+	public void setPosicion(String posicion) {
+		this.posicion = posicion;
 	}
 
 	public int getEdad() {
@@ -82,8 +101,9 @@ public class Jugador {
 
 	@Override
 	public String toString() {
-		return "Jugador [id=" + id + ", nombreJugador=" + nombreJugador + ", edad=" + edad + ", nacionalidadJugador="
-				+ nacionalidadJugador + ", valorMercado=" + valorMercado + ", equipo=" + equipo + "]";
+		return "Jugador [id=" + id + ", nombreJugador=" + nombreJugador + ", equipoJugador=" + equipoJugador
+				+ ", posicion=" + posicion + ", edad=" + edad + ", nacionalidadJugador=" + nacionalidadJugador
+				+ ", valorMercado=" + valorMercado + ", equipo=" + equipo + "]";
 	}
-
+	
 }

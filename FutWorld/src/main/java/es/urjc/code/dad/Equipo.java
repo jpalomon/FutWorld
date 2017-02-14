@@ -8,7 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+// import javax.persistence.OneToOne;
 
 @Entity
 public class Equipo {
@@ -17,6 +17,7 @@ public class Equipo {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	private String nombreEquipo;
+	private String liga;
 	private String nacionalidadEquipo;
 	private int numTorneoGanados;
 	
@@ -26,8 +27,9 @@ public class Equipo {
 	@ManyToOne
 	private Palmares palmares;	
 	
-	@OneToOne(mappedBy="equipo")
-	private Manager manager;
+//	// **** Lo elimino porque es Unidireccional ahora y no Bidireccional. Está declarado en Manager sólo.
+//	@OneToOne(mappedBy="equipo")
+//	private Manager manager;
 	
 	@ManyToOne
 	private Torneo torneo;
@@ -35,11 +37,9 @@ public class Equipo {
 	public Equipo(){
 	}
 	
-	public Equipo (String nombreEquipo,List<Jugador> jugadores,Torneo torneo ,Palmares palmares, String nacionalidadEquipo, int numTorneoGanados){
+	public Equipo (String nombreEquipo, String liga, String nacionalidadEquipo, int numTorneoGanados){
 		this.nombreEquipo = nombreEquipo;
-		this.jugadores = jugadores;
-		this.torneo = torneo;
-		this.palmares = palmares;
+		this.liga = liga;
 		this.nacionalidadEquipo = nacionalidadEquipo;
 		this.numTorneoGanados = numTorneoGanados;		
 	}
@@ -58,6 +58,14 @@ public class Equipo {
 
 	public void setNombreEquipo(String nombreEquipo) {
 		this.nombreEquipo = nombreEquipo;
+	}
+
+	public String getLiga() {
+		return liga;
+	}
+
+	public void setLiga(String liga) {
+		this.liga = liga;
 	}
 
 	public String getNacionalidadEquipo() {
@@ -92,14 +100,6 @@ public class Equipo {
 		this.palmares = palmares;
 	}
 
-	public Manager getManager() {
-		return manager;
-	}
-
-	public void setManager(Manager manager) {
-		this.manager = manager;
-	}
-
 	public Torneo getTorneo() {
 		return torneo;
 	}
@@ -110,9 +110,10 @@ public class Equipo {
 
 	@Override
 	public String toString() {
-		return "Equipo [id=" + id + ", nombreEquipo=" + nombreEquipo + ", nacionalidadEquipo=" + nacionalidadEquipo
-				+ ", numTorneoGanados=" + numTorneoGanados + ", jugadores=" + jugadores + ", palmares=" + palmares
-				+ ", manager=" + manager + ", torneo=" + torneo + "]";
+		return "Equipo [id=" + id + ", nombreEquipo=" + nombreEquipo + ", liga=" + liga + ", nacionalidadEquipo="
+				+ nacionalidadEquipo + ", numTorneoGanados=" + numTorneoGanados + ", jugadores=" + jugadores
+				+ ", palmares=" + palmares + ", torneo=" + torneo + "]";
 	}
+
 
 }

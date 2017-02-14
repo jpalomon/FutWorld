@@ -79,7 +79,7 @@
 		<br>
 		<TABLE align="center" BORDER=0 BGCOLOR=#000099>
 			<TR style="background-color: silver; height: 25px">
-				<TH BGCOLOR=#6E6E6E colspan="4">
+				<TH valign="top" BGCOLOR=#6E6E6E colspan="4">
 					<TABLE align="center" BORDER=0 BGCOLOR=#000099>
 						<TR style="background-color: silver; height: 25px">
 							<TH BGCOLOR=#6E6E6E colspan="4">
@@ -87,7 +87,7 @@
 							</TH>			
 						</TR>		
 						<TR style="background-color: silver; height: 25px">
-							<form action="/consultarjugador" accept-charset="utf-8">
+							<form action="/consultarjugador/nombreJugador" method='get' accept-charset="utf-8">
 							<TH>
 								<TABLE align="center" style = "border: 0px solid #000099; width: 360px;">
 									<TR style="background-color: silver; height: 10px;">
@@ -97,18 +97,18 @@
 									</TR>					
 									<TR style="background-color: silver; height: 10px">
 										<TH>
-											<p align="center"><b>NOMBRE DEL JUGADOR: <input type='text' name='user' style="border: 1px solid #000099;"/></b></p>
+											<p align="center"><b>NOMBRE DEL JUGADOR: <input type='text' name='nombreJugador' style="border: 1px solid #000099;"/></b></p>
 										</TH>
 									</TR>
 									<TR style="background-color: silver; height: 10px">
 										<TH>
-											<input type="submit" value="Buscar" style="background-color: silver; height: 30px; width: 100px; border: 1px solid #000099; font-weight:bold;font-size: 20px;"></a>
+											<input type="submit" value="Buscar" style="background-color: silver; height: 30px; width: 100px; border: 1px solid #000099; font-weight:bold;font-size: 20px;">
 										</TH>
 									</TR>
 								</TABLE>				
 							</TH>
 							</form>				
-							<form action="/consultarequipo" accept-charset="utf-8">
+							<form action="/consultarequipo/equipoJugador" method='get' accept-charset="utf-8">
 							<TH>
 								<TABLE align="center" style = "border: 0px solid #000099; width: 360px;">
 									<TR style="background-color: silver; height: 10px">
@@ -118,12 +118,12 @@
 									</TR>					
 									<TR style="background-color: silver; height: 10px">
 										<TH>
-											<p align="center"><b>NOMBRE DEL EQUIPO: <input type='text' name='user' style="border: 1px solid #000099;"/></b></p>							
+											<p align="center"><b>NOMBRE DEL EQUIPO: <input type='text' name='equipoJugador' style="border: 1px solid #000099;"/></b></p>							
 										</TH>
 									</TR>
 									<TR style="background-color: silver; height: 10px">
 										<TH>
-											<input type="submit" value="Buscar" style="background-color: silver; height: 30px; width: 100px; border: 1px solid #000099; font-weight:bold;font-size: 20px;"></a>
+											<input type="submit" value="Buscar" style="background-color: silver; height: 30px; width: 100px; border: 1px solid #000099; font-weight:bold;font-size: 20px;">
 										</TH>
 									</TR>
 								</TABLE>				
@@ -131,7 +131,7 @@
 							</form>		
 						</TR>
 						<TR style="background-color: silver; height: 25px">
-							<form action="/consultaredadjugador" accept-charset="utf-8">
+							<form action="/consultaredadjugadores/edad" method='get' accept-charset="utf-8">
 							<TH>
 								<TABLE align="center" style = "border: 0px solid #000099; width: 360px;">
 									<TR style="background-color: silver; height: 10px">
@@ -141,7 +141,7 @@
 									</TR>					
 									<TR style="background-color: silver; height: 10px">
 										<TH>
-											<p align="center"><b>EDAD: <input type='text' name='user' style="border: 1px solid #000099;"/></b></p>
+											<p align="center"><b>EDAD: <input type='text' name='edad' style="border: 1px solid #000099;"/></b></p>
 										</TH>
 									</TR>
 									<TR style="background-color: silver; height: 10px">
@@ -152,7 +152,7 @@
 								</TABLE>				
 							</TH>
 							</form>						
-							<form action="/consultarnacionalidadjugador" accept-charset="utf-8">
+							<form action="/consultarpaisjugadores/nacionalidadJugador" method='get' accept-charset="utf-8">
 							<TH>
 								<TABLE align="center" style = "border: 0px solid #000099; width: 360px;">
 									<TR style="background-color: silver; height: 10px">
@@ -162,7 +162,7 @@
 									</TR>					
 									<TR style="background-color: silver; height: 10px">
 										<TH>
-											<p align="center"><b>NACIONALIDAD: <input type='text' name='user' style="border: 1px solid #000099;"/></b></p>
+											<p align="center"><b>NACIONALIDAD: <input type='text' name='nacionalidadJugador' style="border: 1px solid #000099;"/></b></p>
 										</TH>
 									</TR>
 									<TR style="background-color: silver; height: 10px">
@@ -173,9 +173,9 @@
 								</TABLE>				
 							</TH>
 							</form>	
-						</TR>			
+						</TR>		
 						<TR style="background-color: silver; height: 25px">
-							<form action="/consultarnacionalidadjugador" accept-charset="utf-8">
+							<form action="/consultarpalmares/liga" method='get' accept-charset="utf-8">
 							<TH>
 								<TABLE align="center" style = "border: 0px solid #000099; width: 360px;">
 									<TR style="background-color: silver; height: 10px">
@@ -183,30 +183,35 @@
 											<h4 align="center"><b>PALMARÉS</b></h4>
 										</TH>
 									</TR>	
-									<TR style="background-color: silver; height: 89px">
+									<TR style="background-color: silver; height: 10px">
 										<TH>
-											<input type="submit" value="Ver Palmarés" style="background-color: silver; height: 30px; width: 160px; border: 1px solid #000099; font-weight:bold;font-size: 20px;"></a>
+											<p align="center"><b>TORNEO: <input type='text' name='liga' style="border: 1px solid #000099;"/></b></p>
+										</TH>
+									</TR>
+									<TR style="background-color: silver; height: 10px">
+										<TH>
+											<input type="submit" value="Buscar" style="background-color: silver; height: 30px; width: 100px; border: 1px solid #000099; font-weight:bold;font-size: 20px;">
 										</TH>
 									</TR>
 								</TABLE>				
 							</TH>
 							</form>	
-							<form action="/consultartorneo" accept-charset="utf-8">
+							<form action="/consultartorneo/liga" method='get' accept-charset="utf-8">
 							<TH>
 								<TABLE align="center" style = "border: 0px solid #000099; width: 360px;">
 									<TR style="background-color: silver; height: 10px">
 										<TH BGCOLOR=#6E6E6E colspan="2">
-											<h4 align="center"><b>TORNEO</b></h4>
+											<h4 align="center"><b>EQUIPOS TORNEO</b></h4>
 										</TH>
 									</TR>					
 									<TR style="background-color: silver; height: 10px">
 										<TH>
-											<p align="center"><b>TORNEO: <input type='text' name='user' style="border: 1px solid #000099;"/></b></p>
+											<p align="center"><b>TORNEO: <input type='text' name='liga' style="border: 1px solid #000099;"/></b></p>
 										</TH>
 									</TR>
 									<TR style="background-color: silver; height: 10px">
 										<TH>
-											<input type="submit" value="Buscar" style="background-color: silver; height: 30px; width: 100px; border: 1px solid #000099; font-weight:bold;font-size: 20px;"></a>
+											<input type="submit" value="Buscar" style="background-color: silver; height: 30px; width: 100px; border: 1px solid #000099; font-weight:bold;font-size: 20px;">
 										</TH>
 									</TR>
 								</TABLE>				
@@ -239,7 +244,7 @@
 									</TR>
 									<TR style="background-color: silver; height: 10px">
 										<TH>
-											<input type="button" value="Buscar" style="background-color: silver; height: 30px; width: 100px; border: 1px solid #000099; font-weight:bold;font-size: 20px;"></a>
+											<input type="button" value="Buscar" style="background-color: silver; height: 30px; width: 100px; border: 1px solid #000099; font-weight:bold;font-size: 20px;">
 										</TH>
 									</TR>
 								</TABLE>				
@@ -263,7 +268,7 @@
 									</TR>
 									<TR style="background-color: silver; height: 10px">
 										<TH>
-											<input type="button" value="Buscar" style="background-color: silver; height: 30px; width: 100px; border: 1px solid #000099; font-weight:bold;font-size: 20px;"></a>
+											<input type="button" value="Buscar" style="background-color: silver; height: 30px; width: 100px; border: 1px solid #000099; font-weight:bold;font-size: 20px;">
 										</TH>
 									</TR>
 								</TABLE>				
