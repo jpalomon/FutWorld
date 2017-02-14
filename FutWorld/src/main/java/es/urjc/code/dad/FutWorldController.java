@@ -499,7 +499,7 @@ public class FutWorldController {
 		//Creamos los jugadores del PSG.
 		Jugador kevinTrapp = new Jugador("Kevin Trapp","PSG","Portero",26,"Alemania",10000000);
 		Jugador marquinhos = new Jugador("Marquinhos","PSG","Defensa",22,"Portugal",32000000);
-		Jugador marcoVeratti = new Jugador("Marco Verotti","PSG","Mediocentro",24,"Italia",40000000);
+		Jugador marcoVeratti = new Jugador("Marco Veratti","PSG","Mediocentro",24,"Italia",40000000);
 		Jugador edisonCavani = new Jugador("Edison Cavani","PSG","Delantero",29,"Uruguay",45000000);
 		
 		kevinTrapp.setEquipo(psg);
@@ -759,7 +759,7 @@ public class FutWorldController {
 		return "consultajugador";
 	}
 	
-	//Plantilla Equipo.
+	//Buscar Plantilla Equipo.
 	@GetMapping("/consultarequipo/equipoJugador")
 	public String verEquipo (Model model, @RequestParam String equipoJugador){
 		
@@ -768,9 +768,20 @@ public class FutWorldController {
 		model.addAttribute("jugador", jugador);		
 		
 		return "consultaequipo";
-	}	
+	}
 	
-	//Torneo.
+	//Buscar Nacionalidad Jugadores.
+	@GetMapping("/consultarpaisjugadores/nacionalidadJugador")
+	public String verNacionalidadJugadores (Model model, @RequestParam String nacionalidadJugador){
+		
+		List<Jugador> jugador = jugadorRepository.findDistinctJugadoresByNacionalidadJugador(nacionalidadJugador);
+		
+		model.addAttribute("jugador", jugador);		
+		
+		return "consultanacionalidadjugadores";
+	}
+	
+	//Buscar Torneo.
 	@GetMapping("/consultartorneo/liga")
 	public String verTorneo (Model model, @RequestParam String liga){
 		
