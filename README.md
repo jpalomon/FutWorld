@@ -65,11 +65,11 @@ Como podemos apreciar en la imagen, se divide en dos partes:
 
 * Parte pública: Realizar consultas (nombre de jugador, plantilla, edad, nacionalidad, palmarés y torneo).
 
-![](imagenes/30.png "realizarconsulta") 
+![](imagenes/realizarconsulta.png "publica") 
 
 * Parte privada: Área de Gestión del Mánager (registros de Mánager, equipo y jugador y acceso a información del usuario).
 
-![](imagenes/29.png "areagestionmanager")
+![](imagenes/areagestionmanager.png "privada")
 
 ### Registrar Mánager:
 
