@@ -751,6 +751,18 @@ public class FutWorldController {
 	public String principal (){
 		return "index";
 	}
+	
+		//Indicamos la página principal de nuestra aplicación Web (FutWorld).
+	@RequestMapping("/realizarconsultas")
+	public String realizarConsultas (){
+		return "realizarconsultas";
+	}
+	
+		//Indicamos la página principal de nuestra aplicación Web (FutWorld).
+	@RequestMapping("/areagestionmanager")
+	public String areaGestionManager (){
+		return "areagestionmanager";
+	}
 
 	//Buscar Jugador.
 	@GetMapping("/consultarjugador/nombreJugador")
