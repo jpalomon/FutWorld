@@ -757,11 +757,10 @@ public class FutWorldController {
 	public String verJugador(Model model, @RequestParam String nombreJugador){
 		
 		//Comprobamos si existe o no un Jugador registrado con ese "nombreJugador".
-		Jugador existe = jugadorRepository.findByNombreJugador(nombreJugador);
+		Jugador jugador = jugadorRepository.findByNombreJugador(nombreJugador);
 
 		//Si existe, mostramos la información.
-		if (existe!=null){	
-			Jugador jugador = jugadorRepository.findByNombreJugador(nombreJugador);
+		if (jugador!=null){	
 			
 			model.addAttribute("jugador", jugador);
 			
@@ -800,15 +799,16 @@ public class FutWorldController {
 		List<Jugador> existe = jugadorRepository.findByEdad(edad);
 
 		//Si existe, mostramos la información.
-		if (existe!=null){		
+		if (existe.isEmpty()){		
+			
+			return "errornoexistejugadoredad";
+		}else{
+			//Si no existe notifica el error al usuario.
 			List<Jugador> jugador = jugadorRepository.findDistinctJugadoresByEdadOrderByValorMercadoDesc(edad);
 			
 			model.addAttribute("jugador", jugador);		
 			
 			return "consultaedadjugadores";
-		}else{
-			//Si no existe notifica el error al usuario.
-			return "errornoexistejugadoredad";
 		}		
 	}	
 
@@ -820,15 +820,16 @@ public class FutWorldController {
 		List<Jugador> existe = jugadorRepository.findByNacionalidadJugador(nacionalidadJugador);
 
 		//Si existe, mostramos la información.
-		if (existe!=null){	
+		if (existe.isEmpty()){	
+			
+			return "errornoexistejugadornacionalidad";
+		}else{
+			//Si no existe notifica el error al usuario.
 			List<Jugador> jugador = jugadorRepository.findDistinctJugadoresByNacionalidadJugadorOrderByValorMercadoDesc(nacionalidadJugador);
 			
 			model.addAttribute("jugador", jugador);		
 			
 			return "consultanacionalidadjugadores";
-		}else{
-			//Si no existe notifica el error al usuario.
-			return "errornoexistejugadornacionalidad";
 		}	
 	}
 	
@@ -894,15 +895,14 @@ public class FutWorldController {
 	public String verManager(Model model, @RequestParam String user, @RequestParam String password, HttpSession sesion){
 	
 		//Comprobamos si existe o no un Manager registrado con ese "user" y "password".
-		Manager existe = managerRepository.findByUserAndPassword(user,password);
+		Manager manager = managerRepository.findByUserAndPassword(user,password);
 		
 		//Si existe devuelve la información.		
-		if (existe!=null){
+		if (manager!=null){
 			sesion.setAttribute("user", user);
 			sesion.setAttribute("password", password);
 			userCompartida = user;
 			passwordCompartida = password;
-			Manager manager = managerRepository.findByUserAndPassword(user,password);
 			
 			model.addAttribute("manager", manager);
 			
@@ -918,17 +918,16 @@ public class FutWorldController {
 	public String registrarEquipoManager(Model model, @RequestParam String user, @RequestParam String password, HttpSession sesion){
 		
 		//Comprobamos si existe o no un Manager registrado con ese "user" y "password".
-		Manager existe = managerRepository.findByUserAndPassword(user,password);
+		Manager manager = managerRepository.findByUserAndPassword(user,password);
 		
 		//Si existe continuamos con el registro del equipo.		
-		if (existe!=null){
+		if (manager!=null){
 			sesion.setAttribute("user", user);
 			sesion.setAttribute("password", password);
 			userCompartida = user;
 			passwordCompartida = password;
 			//Lo utilizo para que a la hora de inscribir al equipo, aparezca en el placeholder el nombre del
-			//equipo con el que se ha registrado el manager.
-			Manager manager = managerRepository.findByUserAndPassword(user,password);			
+			//equipo con el que se ha registrado el manager.			
 			model.addAttribute("manager", manager);
 			
 			return "registrarequipo";
@@ -962,18 +961,17 @@ public class FutWorldController {
 	public String registrarJugadorManager(Model model, @RequestParam String user, @RequestParam String password, HttpSession sesion){
 		
 		//Comprobamos si existe o no un Manager registrado con ese "user" y "password".
-		Manager existe = managerRepository.findByUserAndPassword(user,password);
+		Manager manager = managerRepository.findByUserAndPassword(user,password);
 		
 		//Si existe continuamos con el registro del equipo.
-		if (existe!=null){
+		if (manager!=null){
 			sesion.setAttribute("user", user);
 			sesion.setAttribute("password", password);
 			userCompartida = user;
 			passwordCompartida = password;
 			
 			//Lo utilizo para que a la hora de inscribir al jugador, aparezca en el placeholder el nombre del
-			//equipo con el que se ha registrado el manager.
-			Manager manager = managerRepository.findByUserAndPassword(user,password);			
+			//equipo con el que se ha registrado el manager.			
 			model.addAttribute("manager", manager);
 			
 			return "registrarjugador";
