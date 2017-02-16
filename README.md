@@ -59,12 +59,17 @@ A continuación, vamos a mostrar cada una de las pantallas de nuestra aplicació
 
 Primeramente, mostramos la página principal de la aplicación:
 
-![](imagenes/2.png "index.html")
+![](imagenes/2.png "index")
 
 Como podemos apreciar en la imagen, se divide en dos partes:
 
 * Parte pública: Realizar consultas (nombre de jugador, plantilla, edad, nacionalidad, palmarés y torneo).
+
+![](imagenes/30.png "Parte publica")
+
 * Parte privada: Área de Gestión del Mánager (registros de Mánager, equipo y jugador y acceso a información del usuario).
+
+![](imagenes/29.png "Parte publica")
 
 ### Registrar Mánager:
 
