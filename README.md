@@ -97,7 +97,7 @@ Por otro lado, hemos generado el siguiente mensaje de error en caso de que los d
 
 Mostramos el formulario de registro del equipo y el mensaje generado al registrarse correctamente.
 
-**Nota:** Hemos creado un placeholder en nombre equipo, donde va a aparecer el nombre del equipo que puso el mánager al registrarse (evitando así equivocaciones al escribise).
+**Nota:** Hemos dado valor directamente al nombre equipo mediante value, de esta forma le va a aparecer el nombre del equipo que puso el mánager al registrarse (evitando así equivocaciones al escribise).
 
 Por otro lado, hemos generado el siguiente mensaje de error en caso de que los datos del manager introducidos (user y password), sean incorrectos.
 
@@ -113,7 +113,7 @@ Por último, en caso de que haya un equipo registrado previamente con ese nombre
 
 Mostramos el formulario de registro del jugador y el mensaje generado al registrarse correctamente.
 
-**Nota:** Hemos creado un placeholder en nombre equipo, donde va a aparecer el nombre del equipo que puso el mánager al registrarse (evitando así equivocaciones al escribise).
+**Nota:** Hemos dado valor directamente al nombre equipo mediante value, de esta forma le va a aparecer el nombre del equipo que puso el mánager al registrarse (evitando así equivocaciones al escribise).
 
 Por otro lado, hemos generado el siguiente mensaje de error en caso de que los datos del manager introducidos (user y password), sean incorrectos.
 
@@ -151,18 +151,6 @@ Mostramos el resultado de buscar jugadores con esas edad. Hemos implementado un 
 
 ![](imagenes/18.png "Error Jugadores por Edad")
 
-**Problema:** No hemos conseguido que nos lo muestre dicho mensaje de error como podemos ver en la siguiente imagen.
-
-![](imagenes/19.png "Tabla vacía")
-
-Nos aparece la tabla vacía dado que no hay ninguno, pero debería aparecer el mensaje de error anterior.
-
-El código que hemos utilizado para ello es el siquiente:
-
-![](imagenes/20.png "Código Jugadores Edad")
-
-Creamos una lista vacía y hacemos una consulta al repositorio del Jugador, mediante la edad del jugador. En la lista almacenamos los jugadores que tengan esa edad, y en caso de que esté vacía debería mostrar el error, pero no hemos conseguido solucionarlo.
-
 ### Jugadores Nacionalidad:
 
 ![](imagenes/21.png "Jugadores por Nacionalidad")
@@ -170,18 +158,6 @@ Creamos una lista vacía y hacemos una consulta al repositorio del Jugador, medi
 Mostramos el resultado de buscar jugadores con esas nacionalidad. Hemos implementado un error, en caso de que no haya jugadores con esa nacionalidad.
 
 ![](imagenes/22.png "Error Jugadores por Nacionalidad")
-
-**Problema:** No hemos conseguido que nos lo muestre dicho mensaje de error como podemos ver en la siguiente imagen.
-
-![](imagenes/23.png "Tabla vacía")
-
-Nos aparece la tabla vacía dado que no hay ninguno, pero debería aparecer el mensaje de error anterior.
-
-El código que hemos utilizado para ellos es el siquiente:
-
-![](imagenes/24.png "Código Jugadores Nacionalidad")
-
-Creamos una lista vacía y hacemos una consulta al repositorio del Jugador, mediante la nacionalidad del jugador. En la lista almacenamos los jugadores que tengan esa nacionalidad, y en caso de que esté vacía debería mostrar el error, pero no hemos conseguido solucionarlo.
 
 ### Palmarés:
 
