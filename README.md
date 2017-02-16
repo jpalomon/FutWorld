@@ -28,7 +28,7 @@ La aplicación web, consiste en una base de datos donde se pueden hacer diferent
 4. Torneo: campeonato de liga en el cúal se van a inscribir los equipos.
 5. Palmarés: ranking de campeones del torneo.
 
-## Integrantes del Proyecto:
+## Integrantes del Proyecto: 
 
 1. Jorge Palomo Neila. Correo: j.palomon@alumnos.urjc.es
 2. Francisco Miján Sánchez. Correo: f.mijans@alumnos.urjc.es
