@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Implementation-Title: FutWorld
 Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: Jorge
+Built-By: Frantxas91
 Implementation-Vendor-Id: es.urjc.code.dad
-Build-Jdk: 1.8.0_121
+Build-Jdk: 1.8.0_91
 Implementation-URL: http://projects.spring.io/spring-boot/futworld/
 Created-By: Maven Integration for Eclipse
 Implementation-Vendor: Pivotal Software, Inc.
