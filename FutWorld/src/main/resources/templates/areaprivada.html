@@ -77,15 +77,58 @@
 		  </tbody>
 		</table>
 		<br>
-		<TABLE align="center" style = "border: 0px solid #000099">
-			<TR style="background-color: silver; height: 10px">
-				<TH>
-					<p>ERROR REGISTRO. MÁNAGER YA EXISTENTE</p>
-				</TH>
-			</TR>
+		<TABLE align="center" BORDER=0 BGCOLOR=#000099>
+			<TR style="background-color: silver; height: 25px">
+				<TH valign="top"  BGCOLOR=#6E6E6E colspan="2">
+					<TABLE align="center" BORDER=0 BGCOLOR=#000099>
+						<TR style="background-color: silver; height: 25px">
+							<TH BGCOLOR=#6E6E6E colspan="4">
+								<h1 align="center">ÁREA PRIVADA</h1>
+							</TH>	
+						</TR>
+						<TR style="background-color: silver; height: 25px">
+							<TH valign="top">
+								<TABLE align="center" style = "border: 0px solid #000099; width: 310px;">
+									<TR style="background-color: silver; height: 10px">
+										<TH BGCOLOR=#6E6E6E colspan="2">
+											<h4 align="center"><b>REGISTRAR MÁNAGER</b></h4>
+										</TH>
+									</TR>					
+									<TR style="background-color: silver; height: 10px">
+										<TH>
+											<a href="registrousuario.html"><input type="button" value="Registrarse" style="background-color: silver; height: 30px; width: 140px; border: 1px solid #000099; font-weight:bold;font-size: 20px;"></a>
+										</TH>
+									</TR>
+								</TABLE>				
+							</TH>						
+							<form action="/login" method='post' accept-charset="utf-8">
+							<TH>
+								<TABLE align="center" style = "border: 0px solid #000099; width: 310px;">
+									<TR style="background-color: silver; height: 10px">
+										<TH BGCOLOR=#6E6E6E colspan="2">
+											<h4 align="center"><b>LOGIN MÁNAGER</b></h4>
+										</TH>
+									</TR>					
+									<TR style="background-color: silver; height: 10px">
+										<TH>
+											<p align="center"><b>USUARIO: <input type='text' name='user' style="border: 1px solid #000099;"/></b></p>
+											<p align="center"><b>CONTRASEÑA: <input type='text' name='password' style="border: 1px solid #000099;"/></b></p>											
+										</TH>
+									</TR>
+									<TR style="background-color: silver; height: 10px">
+										<TH>
+											<input type="submit" value="Acceder" style="background-color: silver; height: 30px; width: 100px; border: 1px solid #000099; font-weight:bold;font-size: 20px;">
+										</TH>
+									</TR>
+								</TABLE>				
+							</TH>
+							</form>
+					</TABLE>
+				</TH>				
+			</TR>			
 		</TABLE>
 		<br>
-		<form action="/areaprivada" method="post">
+		<form action="/" method="post">
 		<TABLE align="center" BORDER=0 BGCOLOR=#000099>
 			<TR>
 				<TH BGCOLOR=#000099>
@@ -93,6 +136,6 @@
 				</TH>
 			</TR>
 		</TABLE>
-		</form>				
+		</form>	
 	</BODY>	
 </HTML>

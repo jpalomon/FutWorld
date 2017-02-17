@@ -752,18 +752,45 @@ public class FutWorldController {
 		return "index";
 	}
 	
-		//Indicamos la página principal de nuestra aplicación Web (FutWorld).
+	//Parte pública de nuestra aplicación Web donde se van a realizar las consultas.
 	@RequestMapping("/realizarconsultas")
 	public String realizarConsultas (){
 		return "realizarconsultas";
 	}
 	
-		//Indicamos la página principal de nuestra aplicación Web (FutWorld).
+	//Parte privada de nuestra aplicación Web donde el usuario podrá loguearse y registrarse.
+	@RequestMapping("/areaprivada")
+	public String areaPrivada (){
+		return "areaprivada";
+	}
+	
+	//Login Manager.
+	@PostMapping("/login")
+	public String loginManager(Model model, @RequestParam String user, @RequestParam String password, HttpSession sesion){
+	
+		//Comprobamos si existe o no un Manager registrado con ese "user" y "password".
+		Manager manager = managerRepository.findByUserAndPassword(user,password);
+		
+		//Si existe devuelve la información.		
+		if (manager!=null){
+			sesion.setAttribute("user", user);
+			sesion.setAttribute("password", password);
+			userCompartida = user;
+			passwordCompartida = password;
+			
+			return "loggincorrecto";
+		}else{
+			//Si no existe notifica el error al usuario.
+			return "errormanagernoexiste";
+		}
+	}
+
+	//Área de gestión del mánager donde podra gestionar su equipo y consultar su información.
 	@RequestMapping("/areagestionmanager")
 	public String areaGestionManager (){
 		return "areagestionmanager";
 	}
-
+	
 	//Buscar Jugador.
 	@GetMapping("/consultarjugador/nombreJugador")
 	public String verJugador(Model model, @RequestParam String nombreJugador){
@@ -904,49 +931,44 @@ public class FutWorldController {
 
 	//Información Manager.
 	@GetMapping("/informacionmanager/user/password")
-	public String verManager(Model model, @RequestParam String user, @RequestParam String password, HttpSession sesion){
+	public String verManager(Model model, HttpSession sesion){
 	
-		//Comprobamos si existe o no un Manager registrado con ese "user" y "password".
-		Manager manager = managerRepository.findByUserAndPassword(user,password);
+		//Cargamos los datos de la sesión del mánager.
+		String user = (String) sesion.getAttribute("user");
+		String password = (String) sesion.getAttribute("password");
+
+		model.addAttribute("user", user);
+		model.addAttribute("password", user);
 		
-		//Si existe devuelve la información.		
-		if (manager!=null){
-			sesion.setAttribute("user", user);
-			sesion.setAttribute("password", password);
-			userCompartida = user;
-			passwordCompartida = password;
+		model.addAttribute("userCompartida", userCompartida);
+		model.addAttribute("passwordCompartida", passwordCompartida);
+		
+		Manager manager = managerRepository.findByUserAndPassword(user,password);
 			
-			model.addAttribute("manager", manager);
+		model.addAttribute("manager", manager);
 			
-			return "consultardatosmanager";
-		}else{
-			//Si no existe notifica el error al usuario.
-			return "errormanagernoexiste";
-		}
+		return "consultardatosmanager";
 	}
 	
 	//Inscribir Equipo.
 	@GetMapping("/registrarequipo/user/password")
-	public String registrarEquipoManager(Model model, @RequestParam String user, @RequestParam String password, HttpSession sesion){
+	public String registrarEquipoManager(Model model, HttpSession sesion){
 		
-		//Comprobamos si existe o no un Manager registrado con ese "user" y "password".
+		//Cargamos los datos de la sesión del Mánager.
+		String user = (String) sesion.getAttribute("user");
+		String password = (String) sesion.getAttribute("password");
+
+		model.addAttribute("user", user);
+		model.addAttribute("password", user);
+		
+		model.addAttribute("userCompartida", userCompartida);
+		model.addAttribute("passwordCompartida", passwordCompartida);
+		
 		Manager manager = managerRepository.findByUserAndPassword(user,password);
-		
-		//Si existe continuamos con el registro del equipo.		
-		if (manager!=null){
-			sesion.setAttribute("user", user);
-			sesion.setAttribute("password", password);
-			userCompartida = user;
-			passwordCompartida = password;
-			//Lo utilizo para que a la hora de inscribir al equipo, aparezca en el placeholder el nombre del
-			//equipo con el que se ha registrado el manager.			
-			model.addAttribute("manager", manager);
 			
-			return "registrarequipo";
-		}else{
-			//Si no existe notifica el error al usuario.
-			return "errormanagernoexiste";
-		}
+		model.addAttribute("manager", manager);
+			
+		return "registrarequipo";
 	}
 	
 	//Registrar Equipo.
@@ -970,27 +992,23 @@ public class FutWorldController {
 	
 	//Inscribir Jugador.
 	@GetMapping("/registrarjugador/user/password")
-	public String registrarJugadorManager(Model model, @RequestParam String user, @RequestParam String password, HttpSession sesion){
+	public String registrarJugadorManager(Model model, HttpSession sesion){
 		
-		//Comprobamos si existe o no un Manager registrado con ese "user" y "password".
+		//Cargamos los datos de la sesión del Mánager.
+		String user = (String) sesion.getAttribute("user");
+		String password = (String) sesion.getAttribute("password");
+
+		model.addAttribute("user", user);
+		model.addAttribute("password", user);
+		
+		model.addAttribute("userCompartida", userCompartida);
+		model.addAttribute("passwordCompartida", passwordCompartida);
+		
 		Manager manager = managerRepository.findByUserAndPassword(user,password);
-		
-		//Si existe continuamos con el registro del equipo.
-		if (manager!=null){
-			sesion.setAttribute("user", user);
-			sesion.setAttribute("password", password);
-			userCompartida = user;
-			passwordCompartida = password;
 			
-			//Lo utilizo para que a la hora de inscribir al jugador, aparezca en el placeholder el nombre del
-			//equipo con el que se ha registrado el manager.			
-			model.addAttribute("manager", manager);
+		model.addAttribute("manager", manager);
 			
-			return "registrarjugador";
-		}else{
-			//Si no existe notifica el error al usuario.
-			return "errormanagernoexiste";
-		}			
+		return "registrarjugador";
 	}
 	
 	//Registrar Jugador.
