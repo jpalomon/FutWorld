@@ -37,7 +37,7 @@ La aplicación web, consiste en una base de datos donde se pueden hacer diferent
 
 ## Diagrama de Navegación:
 
-![](imagenes/Navegacion.png "Diagrama de Navegación")
+![](imagenes/DIAGRAMA DE NAVEGACIÓN.png "Diag. de Navegación")
 
 ## Modelo Entidad/Relación:
 
@@ -69,7 +69,9 @@ Como podemos apreciar en la imagen, se divide en dos partes:
 
 * Parte privada: Área de Gestión del Mánager (registros de Mánager, equipo y jugador y acceso a información del usuario).
 
-![](imagenes/areagestionmanager.png "privada")
+![](imagenes/areaprivada.png "area privada")
+
+Como vemos en la imagen, para que un mánager pueda gestionar su equipo, primeramente ha de registrarse para obtener sus credenciales identificativos. 
 
 ### Registrar Mánager:
 
@@ -81,47 +83,49 @@ Por otro lado, hemos generado el siguiente mensaje de error en caso de que exist
 
 ![](imagenes/4.png "Error Registro Mánager")
 
-### Información Mánager:
+Una vez que el mánager se ha registrado, procederá a loguearse para acceder a su sesión:
 
-![](imagenes/5.png "Información Mánager")
-
-Vemos como se muestra correctamente, la información del usuario logueado.
+![](imagenes/login.png "Login")
 
 Por otro lado, hemos generado el siguiente mensaje de error en caso de que los datos del manager introducidos (user y password), sean incorrectos.
 
 ![](imagenes/6.png "Error Credenciales Mánager")
 
+Una vez que el usuario ha accedido a su sesión podrá tanto consultar su información personal, así como registrar a un nuevo equipo o jugador. Para ello, primeramente mostramos el área de sesión del mánager:
+
+![](imagenes/areagestionmanager.png "Area Sesión Mánager")
+
+### Información Mánager:
+
+![](imagenes/informacion manager.png "Información Personal Mánager")
+
+Vemos como se muestra correctamente, la información del usuario logueado.
+
 ### Registrar Equipo:
 
-![](imagenes/7.png "Registrar Equipo")
+![](imagenes/registrarequipo.png "Registrar un Equipo")
 
 Mostramos el formulario de registro del equipo y el mensaje generado al registrarse correctamente.
 
 **Nota:** Hemos dado valor directamente al nombre equipo mediante value, de esta forma le va a aparecer el nombre del equipo que puso el mánager al registrarse (evitando así equivocaciones al escribise).
 
-Por otro lado, hemos generado el siguiente mensaje de error en caso de que los datos del manager introducidos (user y password), sean incorrectos.
-
-![](imagenes/9.png "Error Información Mánager")
-
-Por último, en caso de que haya un equipo registrado previamente con ese nombre, mostramos el siquiente mensaje de error.
+Por otro lado, en caso de que haya un equipo registrado previamente con ese nombre, mostramos el siquiente mensaje de error.
 
 ![](imagenes/8.png "Error Registrar Equipo")
 
 ### Registrar Jugador:
 
-![](imagenes/10.png "Registrar Jugador")
+![](imagenes/registrarjugador.png "Registrar un Jugador")
 
 Mostramos el formulario de registro del jugador y el mensaje generado al registrarse correctamente.
 
 **Nota:** Hemos dado valor directamente al nombre equipo mediante value, de esta forma le va a aparecer el nombre del equipo que puso el mánager al registrarse (evitando así equivocaciones al escribise).
 
-Por otro lado, hemos generado el siguiente mensaje de error en caso de que los datos del manager introducidos (user y password), sean incorrectos.
-
-![](imagenes/12.png "Error Información Mánager")
-
-Por último, en caso de que haya un jugador registrado previamente con ese nombre, mostramos el siquiente mensaje de error.
+Por otro lado, en caso de que haya un jugador registrado previamente con ese nombre, mostramos el siquiente mensaje de error.
 
 ![](imagenes/11.png "Error Registrar Jugador")
+
+A continuación, mostraremos las funcionalidades de la parte pública de la aplicación.
 
 ### Consulta Jugador:
 
