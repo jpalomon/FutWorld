@@ -28,7 +28,7 @@ La aplicación web, consiste en una base de datos donde se pueden hacer diferent
 4. Torneo: campeonato de liga en el cúal se van a inscribir los equipos.
 5. Palmarés: ranking de campeones del torneo.
 
-## Integrantes del Proyecto:
+## Integrantes del Proyecto: 
 
 1. Jorge Palomo Neila. Correo: j.palomon@alumnos.urjc.es
 2. Francisco Miján Sánchez. Correo: f.mijans@alumnos.urjc.es
@@ -37,7 +37,7 @@ La aplicación web, consiste en una base de datos donde se pueden hacer diferent
 
 ## Diagrama de Navegación:
 
-![](imagenes/Navegacion.png "Diagrama de Navegación")
+![](imagenes/DIAGRAMA DE NAVEGACIÓN.png "Diag. de Navegación")
 
 ## Modelo Entidad/Relación:
 
@@ -59,12 +59,19 @@ A continuación, vamos a mostrar cada una de las pantallas de nuestra aplicació
 
 Primeramente, mostramos la página principal de la aplicación:
 
-![](imagenes/2.png "index.html")
+![](imagenes/2.png "index")
 
 Como podemos apreciar en la imagen, se divide en dos partes:
 
 * Parte pública: Realizar consultas (nombre de jugador, plantilla, edad, nacionalidad, palmarés y torneo).
+
+![](imagenes/realizarconsulta.png "publica") 
+
 * Parte privada: Área de Gestión del Mánager (registros de Mánager, equipo y jugador y acceso a información del usuario).
+
+![](imagenes/areaprivada.png "area privada")
+
+Como vemos en la imagen, para que un mánager pueda gestionar su equipo, primeramente ha de registrarse para obtener sus credenciales identificativos. 
 
 ### Registrar Mánager:
 
@@ -76,47 +83,49 @@ Por otro lado, hemos generado el siguiente mensaje de error en caso de que exist
 
 ![](imagenes/4.png "Error Registro Mánager")
 
-### Información Mánager:
+Una vez que el mánager se ha registrado, procederá a loguearse para acceder a su sesión:
 
-![](imagenes/5.png "Información Mánager")
-
-Vemos como se muestra correctamente, la información del usuario logueado.
+![](imagenes/login.png "Login")
 
 Por otro lado, hemos generado el siguiente mensaje de error en caso de que los datos del manager introducidos (user y password), sean incorrectos.
 
 ![](imagenes/6.png "Error Credenciales Mánager")
 
+Una vez que el usuario ha accedido a su sesión podrá tanto consultar su información personal, así como registrar a un nuevo equipo o jugador. Para ello, primeramente mostramos el área de sesión del mánager:
+
+![](imagenes/areagestionmanager.png "Area Sesión Mánager")
+
+### Información Mánager:
+
+![](imagenes/informacion manager.png "Información Personal Mánager")
+
+Vemos como se muestra correctamente, la información del usuario logueado.
+
 ### Registrar Equipo:
 
-![](imagenes/7.png "Registrar Equipo")
+![](imagenes/registrarequipo.png "Registrar un Equipo")
 
 Mostramos el formulario de registro del equipo y el mensaje generado al registrarse correctamente.
 
-**Nota:** Hemos creado un placeholder en nombre equipo, donde va a aparecer el nombre del equipo que puso el mánager al registrarse (evitando así equivocaciones al escribise).
+**Nota:** Hemos dado valor directamente al nombre equipo mediante value, de esta forma le va a aparecer el nombre del equipo que puso el mánager al registrarse (evitando así equivocaciones al escribise).
 
-Por otro lado, hemos generado el siguiente mensaje de error en caso de que los datos del manager introducidos (user y password), sean incorrectos.
-
-![](imagenes/9.png "Error Información Mánager")
-
-Por último, en caso de que haya un equipo registrado previamente con ese nombre, mostramos el siquiente mensaje de error.
+Por otro lado, en caso de que haya un equipo registrado previamente con ese nombre, mostramos el siquiente mensaje de error.
 
 ![](imagenes/8.png "Error Registrar Equipo")
 
 ### Registrar Jugador:
 
-![](imagenes/10.png "Registrar Jugador")
+![](imagenes/registrarjugador.png "Registrar un Jugador")
 
 Mostramos el formulario de registro del jugador y el mensaje generado al registrarse correctamente.
 
-**Nota:** Hemos creado un placeholder en nombre equipo, donde va a aparecer el nombre del equipo que puso el mánager al registrarse (evitando así equivocaciones al escribise).
+**Nota:** Hemos dado valor directamente al nombre equipo mediante value, de esta forma le va a aparecer el nombre del equipo que puso el mánager al registrarse (evitando así equivocaciones al escribise).
 
-Por otro lado, hemos generado el siguiente mensaje de error en caso de que los datos del manager introducidos (user y password), sean incorrectos.
-
-![](imagenes/12.png "Error Información Mánager")
-
-Por último, en caso de que haya un jugador registrado previamente con ese nombre, mostramos el siquiente mensaje de error.
+Por otro lado, en caso de que haya un jugador registrado previamente con ese nombre, mostramos el siquiente mensaje de error.
 
 ![](imagenes/11.png "Error Registrar Jugador")
+
+A continuación, mostraremos las funcionalidades de la parte pública de la aplicación.
 
 ### Consulta Jugador:
 
@@ -146,18 +155,6 @@ Mostramos el resultado de buscar jugadores con esas edad. Hemos implementado un 
 
 ![](imagenes/18.png "Error Jugadores por Edad")
 
-**Problema:** No hemos conseguido que nos lo muestre dicho mensaje de error como podemos ver en la siguiente imagen.
-
-![](imagenes/19.png "Tabla vacía")
-
-Nos aparece la tabla vacía dado que no hay ninguno, pero debería aparecer el mensaje de error anterior.
-
-El código que hemos utilizado para ello es el siquiente:
-
-![](imagenes/20.png "Código Jugadores Edad")
-
-Creamos una lista vacía y hacemos una consulta al repositorio del Jugador, mediante la edad del jugador. En la lista almacenamos los jugadores que tengan esa edad, y en caso de que esté vacía debería mostrar el error, pero no hemos conseguido solucionarlo.
-
 ### Jugadores Nacionalidad:
 
 ![](imagenes/21.png "Jugadores por Nacionalidad")
@@ -165,18 +162,6 @@ Creamos una lista vacía y hacemos una consulta al repositorio del Jugador, medi
 Mostramos el resultado de buscar jugadores con esas nacionalidad. Hemos implementado un error, en caso de que no haya jugadores con esa nacionalidad.
 
 ![](imagenes/22.png "Error Jugadores por Nacionalidad")
-
-**Problema:** No hemos conseguido que nos lo muestre dicho mensaje de error como podemos ver en la siguiente imagen.
-
-![](imagenes/23.png "Tabla vacía")
-
-Nos aparece la tabla vacía dado que no hay ninguno, pero debería aparecer el mensaje de error anterior.
-
-El código que hemos utilizado para ellos es el siquiente:
-
-![](imagenes/24.png "Código Jugadores Nacionalidad")
-
-Creamos una lista vacía y hacemos una consulta al repositorio del Jugador, mediante la nacionalidad del jugador. En la lista almacenamos los jugadores que tengan esa nacionalidad, y en caso de que esté vacía debería mostrar el error, pero no hemos conseguido solucionarlo.
 
 ### Palmarés:
 

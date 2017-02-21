@@ -81,7 +81,7 @@
 		<div align="center">		
 			<form action="/equipo/nuevo" method="post" accept-charset="utf-8">
 				<p>
-					<p align="center"><b>Nombre del Equipo: <input type='text' name='nombreEquipo' placeholder="Escriba '{{equipoManager}}'..." style="border: 1px solid #000099;"/></b></p>
+					<p align="center"><b>Nombre del Equipo: <input type='text' name='nombreEquipo' value ="{{equipoManager}}" style="border: 1px solid #000099;"/></b></p>
 				</p>
 				<br>
 				<p>
@@ -108,11 +108,11 @@
 		{{/manager}}		
 		<br>
 		<br>
-		<form action="/" method="post">
+		<form action="/areagestionmanager" method="post">
 		<TABLE align="center" BORDER=0 BGCOLOR=#000099>
 			<TR>
 				<TH BGCOLOR=#000099>
-					<input type="submit" value="Cerrar Sesión" style="background-color: silver; height: 75px; width: 300px; border: 1px solid #000099; font-weight:bold;font-size: 20px;">
+					<input type="submit" value="Volver" style="background-color: silver; height: 75px; width: 300px; border: 1px solid #000099; font-weight:bold;font-size: 20px;">
 				</TH>
 			</TR>
 		</TABLE>
