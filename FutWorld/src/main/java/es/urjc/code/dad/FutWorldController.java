@@ -3,9 +3,13 @@ package es.urjc.code.dad;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -764,30 +768,42 @@ public class FutWorldController {
 		return "areaprivada";
 	}
 	
+	//Acceso a formulario de registro.
+	@RequestMapping("/registrousuario")
+	public String registroUsuario (){
+		return "registrousuario";
+	}
+	
 	//Login Manager.
 	@PostMapping("/login")
-	public String loginManager(Model model, @RequestParam String user, @RequestParam String password, HttpSession sesion){
-	
+	public String loginManager(Model model, @RequestParam String user, @RequestParam String password, HttpSession sesion, HttpServletRequest request){
 		//Comprobamos si existe o no un Manager registrado con ese "user" y "password".
-		Manager manager = managerRepository.findByUserAndPassword(user,password);
+		Manager manager = managerRepository.findByUserAndPassword(user,password);	
 		
 		//Si existe devuelve la información.		
-		if (manager!=null){
-			sesion.setAttribute("user", user);
-			sesion.setAttribute("password", password);
-			userCompartida = user;
-			passwordCompartida = password;
-			
-			return "loggincorrecto";
+		if (manager!=null){	
+			Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+			String usuario = authentication.getName();
+			sesion = request.getSession();
+			sesion.setAttribute("user", usuario);
+			model.addAttribute("userCompartida", userCompartida);	
+			return "areagestionmanager";
 		}else{
 			//Si no existe notifica el error al usuario.
-			return "errormanagernoexiste";
+			return "areaprivada";
 		}
 	}
-
+	
 	//Área de gestión del mánager donde podra gestionar su equipo y consultar su información.
 	@RequestMapping("/areagestionmanager")
-	public String areaGestionManager (){
+	public String areaGestionManager (Model model, HttpSession sesion,HttpServletRequest request){
+		
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String user = authentication.getName();
+		sesion = request.getSession();
+		sesion.setAttribute("user", user);
+		model.addAttribute("userCompartida", userCompartida);
+		
 		return "areagestionmanager";
 	}
 	
@@ -920,7 +936,8 @@ public class FutWorldController {
 		
 		//Si no existe lo crea (registra).
 		if (existe==null){
-			Manager manager = new Manager(nombreManager,equipoManager,user,password);
+			String contraseña = (new BCryptPasswordEncoder().encode(password));
+			Manager manager = new Manager(nombreManager,equipoManager,user,contraseña);
 			managerRepository.save(manager);
 			return "managerregistrado";
 		}else{
@@ -931,19 +948,25 @@ public class FutWorldController {
 
 	//Información Manager.
 	@GetMapping("/informacionmanager/user/password")
-	public String verManager(Model model, HttpSession sesion){
-	
-		//Cargamos los datos de la sesión del mánager.
-		String user = (String) sesion.getAttribute("user");
-		String password = (String) sesion.getAttribute("password");
-
-		model.addAttribute("user", user);
-		model.addAttribute("password", user);
+	public String verManager(Model model, HttpSession sesion,HttpServletRequest request){
 		
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String user = authentication.getName();
+		sesion = request.getSession();
+		sesion.setAttribute("user", user);
 		model.addAttribute("userCompartida", userCompartida);
-		model.addAttribute("passwordCompartida", passwordCompartida);
 		
-		Manager manager = managerRepository.findByUserAndPassword(user,password);
+		//Cargamos los datos de la sesión del mánager.
+//		String user = (String) sesion.getAttribute("user");
+//		String password = (String) sesion.getAttribute("password");
+
+//		model.addAttribute("user", user);
+//		model.addAttribute("password", user);
+//		
+//		model.addAttribute("userCompartida", userCompartida);
+//		model.addAttribute("passwordCompartida", passwordCompartida);
+//		
+		Manager manager = managerRepository.findByUser(user);
 			
 		model.addAttribute("manager", manager);
 			
@@ -952,19 +975,25 @@ public class FutWorldController {
 	
 	//Inscribir Equipo.
 	@GetMapping("/registrarequipo/user/password")
-	public String registrarEquipoManager(Model model, HttpSession sesion){
+	public String registrarEquipoManager(Model model, HttpSession sesion, HttpServletRequest request){
+		
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String user = authentication.getName();
+		sesion = request.getSession();
+		sesion.setAttribute("user", user);
+		model.addAttribute("userCompartida", userCompartida);
 		
 		//Cargamos los datos de la sesión del Mánager.
-		String user = (String) sesion.getAttribute("user");
-		String password = (String) sesion.getAttribute("password");
-
-		model.addAttribute("user", user);
-		model.addAttribute("password", user);
+//		String user = (String) sesion.getAttribute("user");
+//		String password = (String) sesion.getAttribute("password");
+//
+//		model.addAttribute("user", user);
+//		model.addAttribute("password", user);
+//		
+//		model.addAttribute("userCompartida", userCompartida);
+//		model.addAttribute("passwordCompartida", passwordCompartida);
 		
-		model.addAttribute("userCompartida", userCompartida);
-		model.addAttribute("passwordCompartida", passwordCompartida);
-		
-		Manager manager = managerRepository.findByUserAndPassword(user,password);
+		Manager manager = managerRepository.findByUser(user);
 			
 		model.addAttribute("manager", manager);
 			
@@ -992,19 +1021,25 @@ public class FutWorldController {
 	
 	//Inscribir Jugador.
 	@GetMapping("/registrarjugador/user/password")
-	public String registrarJugadorManager(Model model, HttpSession sesion){
+	public String registrarJugadorManager(Model model,HttpServletRequest request  ,HttpSession sesion){
+		
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String user = authentication.getName();
+		sesion = request.getSession();
+		sesion.setAttribute("user", user);
+		model.addAttribute("userCompartida", userCompartida);
 		
 		//Cargamos los datos de la sesión del Mánager.
-		String user = (String) sesion.getAttribute("user");
-		String password = (String) sesion.getAttribute("password");
-
-		model.addAttribute("user", user);
-		model.addAttribute("password", user);
+//		String user = (String) sesion.getAttribute("user");
+//		String password = (String) sesion.getAttribute("password");
+//
+//		model.addAttribute("user", user);
+//		model.addAttribute("password", user);
+//		
+//		model.addAttribute("userCompartida", userCompartida);
+//		model.addAttribute("passwordCompartida", passwordCompartida);
 		
-		model.addAttribute("userCompartida", userCompartida);
-		model.addAttribute("passwordCompartida", passwordCompartida);
-		
-		Manager manager = managerRepository.findByUserAndPassword(user,password);
+		Manager manager = managerRepository.findByUser(user);
 			
 		model.addAttribute("manager", manager);
 			
