@@ -1,13 +1,18 @@
 package es.urjc.code.dad;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Entity
 public class Manager {
@@ -26,14 +31,18 @@ public class Manager {
 	@OneToMany
 	private List <Jugador> jugadores;
 	
+	@ElementCollection(fetch = FetchType.EAGER)
+	private List<String> roles;
+	
 	public Manager(){
 	}
 
-	public Manager(String nombreManager, String equipoManager, String user, String password) {
+	public Manager(String nombreManager, String equipoManager, String user, String password, String rol) {
 		this.nombreManager = nombreManager;
 		this.equipoManager = equipoManager;
 		this.user = user;
-		this.password = password;
+		this.password = new BCryptPasswordEncoder().encode(password);
+		this.roles = new ArrayList<String>();
 	}
 
 	public long getId() {
@@ -92,10 +101,18 @@ public class Manager {
 		this.jugadores = jugadores;
 	}
 
+	public List<String> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(List<String> roles) {
+		this.roles = roles;
+	}
+
 	@Override
 	public String toString() {
 		return "Manager [id=" + id + ", nombreManager=" + nombreManager + ", equipoManager=" + equipoManager + ", user="
-				+ user + ", password=" + password + ", equipo=" + equipo + ", jugadores=" + jugadores + "]";
+				+ user + ", password=" + password + ", equipo=" + equipo + ", jugadores=" + jugadores + ", roles="
+				+ roles + "]";
 	}
-
 }
