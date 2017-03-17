@@ -86,9 +86,6 @@
 					<h4>JUGADOR</h4>
 				</TH>
 				<TH>
-					<h4>FOTO</h4>
-				</TH>
-				<TH>
 					<h4>EQUIPO</h4>
 				</TH>								
 				<TH>
@@ -110,8 +107,6 @@
 				</TH>
 				<TH> {{nombreJugador}}
 				</TH>
-				<TH>
-				</TH>
 				<TH> {{equipoJugador}}
 				</TH>				
 				<TH> {{posicion}}
@@ -131,6 +126,7 @@
 			<TR>
 				<TH BGCOLOR=#000099>
 					<input type="submit" value="Volver" style="background-color: silver; height: 75px; width: 300px; border: 1px solid #000099; font-weight:bold;font-size: 20px;">
+					<input type="hidden" name="_csrf" value="{{token}}"/>
 				</TH>
 			</TR>
 		</TABLE>

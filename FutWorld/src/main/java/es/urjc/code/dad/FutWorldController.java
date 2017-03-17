@@ -601,10 +601,10 @@ public class FutWorldController {
 //		jugadorRepository.save(raulJimenez);	
 //		
 //		//Creamos los jugadores del Sporting de Lisboa.
-//		Jugador ruiPatricio = new Jugador("Rui Patricio","Sporting Lisboa","Portero",28,"Portugal",16000000);
-//		Jugador rubenSemedo = new Jugador("Ruben Semedo","Sporting Lisboa","Defensa",22,"Portugal",7000000);
-//		Jugador williamCarvalho = new Jugador("William Carvalho","Sporting Lisboa","Mediocentro",24,"Portugal",30000000);
-//		Jugador banDost = new Jugador("Ban Dost","Sporting Lisboa","Delantero",27,"Holanda",27000000);
+//		Jugador ruiPatricio = new Jugador("Rui Patricio","Sporting de Lisboa","Portero",28,"Portugal",16000000);
+//		Jugador rubenSemedo = new Jugador("Ruben Semedo","Sporting de Lisboa","Defensa",22,"Portugal",7000000);
+//		Jugador williamCarvalho = new Jugador("William Carvalho","Sporting de Lisboa","Mediocentro",24,"Portugal",30000000);
+//		Jugador banDost = new Jugador("Ban Dost","Sporting de Lisboa","Delantero",27,"Holanda",27000000);
 //		
 //		ruiPatricio.setEquipo(sportingLisboa);
 //		rubenSemedo.setEquipo(sportingLisboa);
@@ -617,10 +617,10 @@ public class FutWorldController {
 //		jugadorRepository.save(banDost);		
 //		
 //		//Creamos los jugadores del Sporting de Braga.
-//		Jugador marafona = new Jugador("Marafona","Sporting Braga","Portero",29,"Portugal",2000000);
-//		Jugador emilianoVelazquez = new Jugador("Emiliano Velazquez","Sporting Braga","Defensa",22,"Uruguay",1500000);
-//		Jugador nikolaVukcevic = new Jugador("Nikola Vukcevic","Sporting Braga","Mediocentro",25,"Albania",3000000);
-//		Jugador ahmedHassan = new Jugador("Ahmed Hassan","Sporting Braga","Delantero",23,"Egipto",4500000);
+//		Jugador marafona = new Jugador("Marafona","Sporting de Braga","Portero",29,"Portugal",2000000);
+//		Jugador emilianoVelazquez = new Jugador("Emiliano Velazquez","Sporting de Braga","Defensa",22,"Uruguay",1500000);
+//		Jugador nikolaVukcevic = new Jugador("Nikola Vukcevic","Sporting de Braga","Mediocentro",25,"Albania",3000000);
+//		Jugador ahmedHassan = new Jugador("Ahmed Hassan","Sporting de Braga","Delantero",23,"Egipto",4500000);
 //		
 //		marafona.setEquipo(sportingBraga);
 //		emilianoVelazquez.setEquipo(sportingBraga);
