@@ -6,5 +6,4 @@ public interface ManagerRepository extends JpaRepository <Manager, Long>{
 	
 	Manager findByUserAndPassword(String user, String password);
 	Manager findByUser(String user);
-	
 }

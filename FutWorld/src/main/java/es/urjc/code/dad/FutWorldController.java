@@ -1,5 +1,6 @@
 package es.urjc.code.dad;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -633,119 +634,119 @@ public class FutWorldController {
 //		jugadorRepository.save(ahmedHassan);
 //		
 //		//Creamos los managers de los equipos.
-//		Manager zinedineZidane = new Manager("Zinedine Zidane","Real Madrid","ZineZid","remadr");
+//		Manager zinedineZidane = new Manager("Zinedine Zidane","Real Madrid","ZineZid","remadr","ROLE_USER");
 //		zinedineZidane.setEquipo(realMadrid);
 //		managerRepository.save(zinedineZidane);
 //		
-//		Manager luisEnrique = new Manager("Luis Enrique","Barcelona","LuEnr","fcbarc");
+//		Manager luisEnrique = new Manager("Luis Enrique","Barcelona","LuEnr","fcbarc","ROLE_USER");
 //		luisEnrique.setEquipo(barcelona);
 //		managerRepository.save(luisEnrique);
 //		
-//		Manager diegoSimeone = new Manager("Diego Simeone","Atletico de Madrid","DieSim","atmad");
+//		Manager diegoSimeone = new Manager("Diego Simeone","Atletico de Madrid","DieSim","atmad","ROLE_USER");
 //		diegoSimeone.setEquipo(atleticoMadrid);
 //		managerRepository.save(diegoSimeone);
 //		
-//		Manager jorgeSampaoli = new Manager("Jorge Sampaoli","Sevilla","JorSamp","sevfc");
+//		Manager jorgeSampaoli = new Manager("Jorge Sampaoli","Sevilla","JorSamp","sevfc","ROLE_USER");
 //		jorgeSampaoli.setEquipo(sevilla);
 //		managerRepository.save(jorgeSampaoli);
 //		
-//		Manager franEscriba = new Manager("Fran Escriba","Villarreal","FrEscr","villafc");
+//		Manager franEscriba = new Manager("Fran Escriba","Villarreal","FrEscr","villafc","ROLE_USER");
 //		franEscriba.setEquipo(villarreal);
 //		managerRepository.save(franEscriba);
 //		
-//		Manager asierGaritano = new Manager("Asier Garitano","Leganes","AsGari","cdleg");
+//		Manager asierGaritano = new Manager("Asier Garitano","Leganes","AsGari","cdleg","ROLE_USER");
 //		asierGaritano.setEquipo(leganes);
 //		managerRepository.save(asierGaritano);
 //		
-//		Manager antonioConte = new Manager("Antonio Conte","Chelsea","AntCon","chel");
+//		Manager antonioConte = new Manager("Antonio Conte","Chelsea","AntCon","chel","ROLE_USER");
 //		antonioConte.setEquipo(chelsea);
 //		managerRepository.save(antonioConte);		
 //
-//		Manager arseneWenger = new Manager("Arsene Wenger","Arsenal","ArWeng","arsn");
+//		Manager arseneWenger = new Manager("Arsene Wenger","Arsenal","ArWeng","arsn","ROLE_USER");
 //		arseneWenger.setEquipo(arsenal);
 //		managerRepository.save(arseneWenger);
 //		
-//		Manager jurgenKlopp = new Manager("Jurgen Klopp","Liverpool","JuKlo","livfc");
+//		Manager jurgenKlopp = new Manager("Jurgen Klopp","Liverpool","JuKlo","livfc","ROLE_USER");
 //		jurgenKlopp.setEquipo(liverpool);
 //		managerRepository.save(jurgenKlopp);
 //		
-//		Manager joseMourinho = new Manager("Jose Mourinho","Manchester United","JoMou","manu");
+//		Manager joseMourinho = new Manager("Jose Mourinho","Manchester United","JoMou","manu","ROLE_USER");
 //		joseMourinho.setEquipo(manchesterUnited);
 //		managerRepository.save(joseMourinho);
 //
-//		Manager pepGuardiola = new Manager("Pep Guardiola","Manchester City","PeGuar","manc");
+//		Manager pepGuardiola = new Manager("Pep Guardiola","Manchester City","PeGuar","manc","ROLE_USER");
 //		pepGuardiola.setEquipo(manchesterCity);
 //		managerRepository.save(pepGuardiola);
 //		
-//		Manager mauricioPochettino = new Manager("Mauricio Pochettino","Tottenham","MauPoch","totten");
+//		Manager mauricioPochettino = new Manager("Mauricio Pochettino","Tottenham","MauPoch","totten","ROLE_USER");
 //		mauricioPochettino.setEquipo(tottenham);
 //		managerRepository.save(mauricioPochettino);
 //		
-//		Manager massimilianoAllegri = new Manager("Massimiliano Allegri","Juventus","MasAlle","juvfc");
+//		Manager massimilianoAllegri = new Manager("Massimiliano Allegri","Juventus","MasAlle","juvfc","ROLE_USER");
 //		massimilianoAllegri.setEquipo(juventus);
 //		managerRepository.save(massimilianoAllegri);		
 //		
-//		Manager vicenzoMontella = new Manager("Vicenzo Montella","Milan","VicMon","acmil");
+//		Manager vicenzoMontella = new Manager("Vicenzo Montella","Milan","VicMon","acmil","ROLE_USER");
 //		vicenzoMontella.setEquipo(milan);
 //		managerRepository.save(vicenzoMontella);
 //		
-//		Manager stefanoPioli = new Manager("Stefano Pioli","Inter de Milan","StePio","intmil");
+//		Manager stefanoPioli = new Manager("Stefano Pioli","Inter de Milan","StePio","intmil","ROLE_USER");
 //		stefanoPioli.setEquipo(interMilan);
 //		managerRepository.save(stefanoPioli);
 //		
-//		Manager lucianoSpalletti = new Manager("Luciano Spalletti","Roma","LucSpa","asrom");
+//		Manager lucianoSpalletti = new Manager("Luciano Spalletti","Roma","LucSpa","asrom","ROLE_USER");
 //		lucianoSpalletti.setEquipo(roma);
 //		managerRepository.save(lucianoSpalletti);
 //		
-//		Manager maurizioSarri = new Manager("Maurizio Sarri","Napoles","MauSar","sscnap");
+//		Manager maurizioSarri = new Manager("Maurizio Sarri","Napoles","MauSar","sscnap","ROLE_USER");
 //		maurizioSarri.setEquipo(napoles);
 //		managerRepository.save(maurizioSarri);
 //		
-//		Manager carloAncelotti = new Manager("Carlo Ancelotti","Bayern Munich","CarAnc","fcbaym");
+//		Manager carloAncelotti = new Manager("Carlo Ancelotti","Bayern Munich","CarAnc","fcbaym","ROLE_USER");
 //		carloAncelotti.setEquipo(bayernMunich);
 //		managerRepository.save(carloAncelotti);
 //		
-//		Manager thomasTuchel = new Manager("Thomas Tuchel","Borussia Dormund","TomTuc","bordor");
+//		Manager thomasTuchel = new Manager("Thomas Tuchel","Borussia Dormund","TomTuc","bordor","ROLE_USER");
 //		thomasTuchel.setEquipo(borussiaDormund);
 //		managerRepository.save(thomasTuchel);
 //		
-//		Manager rogerSchmidt = new Manager("Roger Schmidt","Bayer Leverkusen","RogSch","baylev");
+//		Manager rogerSchmidt = new Manager("Roger Schmidt","Bayer Leverkusen","RogSch","baylev","ROLE_USER");
 //		rogerSchmidt.setEquipo(bayerLeverkusen);
 //		managerRepository.save(rogerSchmidt);
 //		
-//		Manager markusWeinzierl = new Manager("Markus Weinzierl","Shalke 04","MarWein","fcshal");
+//		Manager markusWeinzierl = new Manager("Markus Weinzierl","Shalke 04","MarWein","fcshal","ROLE_USER");
 //		markusWeinzierl.setEquipo(shalke);
 //		managerRepository.save(markusWeinzierl);
 //		
-//		Manager unaiEmery = new Manager("Unai Emery","PSG","UnEme","fcpsg");
+//		Manager unaiEmery = new Manager("Unai Emery","PSG","UnEme","fcpsg","ROLE_USER");
 //		unaiEmery.setEquipo(psg);
 //		managerRepository.save(unaiEmery);
 //		
-//		Manager leonardoJardim = new Manager("Leonardo Jardim","Monaco","LeoJar","asmon");
+//		Manager leonardoJardim = new Manager("Leonardo Jardim","Monaco","LeoJar","asmon","ROLE_USER");
 //		leonardoJardim.setEquipo(monaco);
 //		managerRepository.save(leonardoJardim);
 //		
-//		Manager brunoGenesio = new Manager("Bruno Genesio","Olympique de Lyon","BruGen","olylyo");
+//		Manager brunoGenesio = new Manager("Bruno Genesio","Olympique de Lyon","BruGen","olylyo","ROLE_USER");
 //		brunoGenesio.setEquipo(olympiqueLyon);
 //		managerRepository.save(brunoGenesio);
 //		
-//		Manager rudiGarcia = new Manager("Rudi Garcia","Olympique de Marsella","RudGar","olymar");
+//		Manager rudiGarcia = new Manager("Rudi Garcia","Olympique de Marsella","RudGar","olymar","ROLE_USER");
 //		rudiGarcia.setEquipo(olympiqueMarsella);
 //		managerRepository.save(rudiGarcia);
 //		
-//		Manager nunoEspiritoSanto = new Manager("Nuno Espirito Santo","Oporto","NunEspS","fcopo");
+//		Manager nunoEspiritoSanto = new Manager("Nuno Espirito Santo","Oporto","NunEspS","fcopo","ROLE_USER");
 //		nunoEspiritoSanto.setEquipo(oporto);
 //		managerRepository.save(nunoEspiritoSanto);
 //		
-//		Manager ruiVitoria = new Manager("Rui Vitoria","Benfica","RuVit","slbenf");
+//		Manager ruiVitoria = new Manager("Rui Vitoria","Benfica","RuVit","slbenf","ROLE_USER");
 //		ruiVitoria.setEquipo(benfica);
 //		managerRepository.save(ruiVitoria);
 //		
-//		Manager jorgeJesus = new Manager("Jorge Jesus","Sporting Lisboa","JorJes","splisb");
+//		Manager jorgeJesus = new Manager("Jorge Jesus","Sporting Lisboa","JorJes","splisb","ROLE_USER");
 //		jorgeJesus.setEquipo(sportingLisboa);
 //		managerRepository.save(jorgeJesus);
 //		
-//		Manager jorgeSimao = new Manager("Jorge Simao","Sporting Braga","JorSim","scbra");
+//		Manager jorgeSimao = new Manager("Jorge Simao","Sporting Braga","JorSim","scbra","ROLE_USER");
 //		jorgeSimao.setEquipo(sportingBraga);
 //		managerRepository.save(jorgeSimao);	
 	}
@@ -936,8 +937,8 @@ public class FutWorldController {
 		
 		//Si no existe lo crea (registra).
 		if (existe==null){
-			String contraseña = (new BCryptPasswordEncoder().encode(password));
-			Manager manager = new Manager(nombreManager,equipoManager,user,contraseña);
+			String rol = "ROLE_USER";
+			Manager manager = new Manager(nombreManager,equipoManager,user,password,rol);
 			managerRepository.save(manager);
 			return "managerregistrado";
 		}else{
