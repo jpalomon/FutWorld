@@ -36,12 +36,12 @@ public class FutWorldController {
 	String userCompartida;
 	String passwordCompartida;
 	
-	@PostConstruct 
-	//Indicamos los torneos, equipos y jugadores añadidos por defecto al ejecutarse el programa.
-	public void predeterminado(){
-		//Generamos los siguientes Torneos, Equipos, Jugadores y Mánagers únicamente la primera vez que se 
-		//ejecuta la app. Las demás veces, como ya están cargado los datos (persistencia), los comentamos.
-		
+//	@PostConstruct 
+//	//Indicamos los torneos, equipos y jugadores añadidos por defecto al ejecutarse el programa.
+//	public void predeterminado(){
+//		//Generamos los siguientes Torneos, Equipos, Jugadores y Mánagers únicamente la primera vez que se 
+//		//ejecuta la app. Las demás veces, como ya están cargado los datos (persistencia), los comentamos.
+//		
 //		//Creamos los Torneos.
 //		Torneo laLiga = new Torneo("La Liga",20);
 //		Torneo premierLeague = new Torneo("Premier League",20);
@@ -748,7 +748,7 @@ public class FutWorldController {
 //		Manager jorgeSimao = new Manager("Jorge Simao","Sporting Braga","JorSim","scbra","ROLE_USER");
 //		jorgeSimao.setEquipo(sportingBraga);
 //		managerRepository.save(jorgeSimao);	
-	}
+//	}
 	
 	//Indicamos la página principal de nuestra aplicación Web (FutWorld).
 	@RequestMapping("/")
