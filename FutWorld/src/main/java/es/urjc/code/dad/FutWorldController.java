@@ -1,6 +1,6 @@
 package es.urjc.code.dad;
 
-import java.util.ArrayList;
+import java.io.File;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -10,7 +10,6 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -1013,6 +1012,18 @@ public class FutWorldController {
 			Equipo equipo = new Equipo(nombreEquipo,liga,nacionalidadEquipo,numTorneoGanados);
 			equipoRepository.save(equipo);
 			
+			File dirEquipo = null;
+			try{
+			dirEquipo = new File("fichas/"+nombreEquipo);
+			if (!dirEquipo.exists()) {
+				dirEquipo.mkdir();
+			}
+			}catch(Exception e){
+				e.printStackTrace();
+			}finally{
+				
+			}
+			
 			return "equiporegistrado";
 		}else{
 			//Si existe notifica el error al usuario y no lo registra.
@@ -1058,6 +1069,10 @@ public class FutWorldController {
 		if (existe==null){
 			Jugador jugador = new Jugador (nombreJugador,equipoJugador,posicion,edad,nacionalidadJugador,valorMercado);
 			jugadorRepository.save(jugador);
+			
+			ClienteSocket socket = new ClienteSocket();
+			socket.enviarInfoJugador(nombreJugador,equipoJugador,posicion,edad,nacionalidadJugador,valorMercado);
+			socket.recibirInfoJugador(nombreJugador,equipoJugador);
 			
 			return "jugadorregistrado";
 		}else{
