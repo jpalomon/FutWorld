@@ -45,7 +45,7 @@ El servicio interno de nuestra aplicación, va a ser utilizado para generar las 
 
 ## Modelo Entidad/Relación:
 
-![](imagenes/Entidad Relacion.png "Modelo Entidad/Relación")
+![](imagenes/Entidad Relacion.png "Mod. E/R.")
 
 ## Diagrama UML:
 
