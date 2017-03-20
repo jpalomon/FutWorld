@@ -53,7 +53,7 @@ El servicio interno de nuestra aplicación, va a ser utilizado para generar las 
 
 ## Diagrama de Clases:
 
-![](imagenes/Diagrama de Clases.png "Diag. Clases")
+![](imagenes/Diagrama de Clases.png "D. clases")
 
 ## Pantallazos de la aplicación:
 
