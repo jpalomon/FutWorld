@@ -1012,16 +1012,26 @@ public class FutWorldController {
 			Equipo equipo = new Equipo(nombreEquipo,liga,nacionalidadEquipo,numTorneoGanados);
 			equipoRepository.save(equipo);
 			
-			File dirEquipo = null;
+			File dirFichas = null;
 			try{
-			dirEquipo = new File("fichas/"+nombreEquipo);
-			if (!dirEquipo.exists()) {
-				dirEquipo.mkdir();
-			}
+				dirFichas = new File("fichas");
+				if (!dirFichas.exists()) {
+					dirFichas.mkdir();
+				}
 			}catch(Exception e){
 				e.printStackTrace();
-			}finally{
-				
+			}finally{				
+			}
+			
+			File dirEquipo = null;
+			try{
+				dirEquipo = new File("fichas/"+nombreEquipo);
+				if (!dirEquipo.exists()) {
+					dirEquipo.mkdir();
+				}
+			}catch(Exception e){
+				e.printStackTrace();
+			}finally{				
 			}
 			
 			return "equiporegistrado";
