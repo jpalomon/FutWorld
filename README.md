@@ -51,6 +51,10 @@ El servicio interno de nuestra aplicación, va a ser utilizado para generar las 
 
 ![](imagenes/diagramauml.png "Diag. uml")
 
+## Diagrama de Clases:
+
+![](imagenes/Diagrama de Clases.png "Diag. Clases")
+
 ## Pantallazos de la aplicación:
 
 A continuación, vamos a mostrar cada una de las pantallas de nuestra aplicación, así como las funcionalidades de las mismas.
