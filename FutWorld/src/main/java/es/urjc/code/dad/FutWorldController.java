@@ -1005,23 +1005,43 @@ public class FutWorldController {
 	public String registroEquipo (@RequestParam String nombreEquipo, @RequestParam String liga, @RequestParam String nacionalidadEquipo, @RequestParam int numTorneoGanados, HttpSession sesion){
 
 		//Comprobamos si existe o no un Equipo registrado con ese "nombreEquipo".
-		Equipo existe = equipoRepository.findByNombreEquipo(nombreEquipo);		
+		Equipo existe = equipoRepository.findByNombreEquipo(nombreEquipo);
+		
+		//Comprobamos si existe o no un Torneo registrado con ese nombre de "liga".
+		Torneo torneo = torneoRepository.findByNombreLiga(liga);
 
 		//Si no existe, continuamos con el registro del equipo.
 		if (existe==null){
+			//Si no existe el torneo lo creo  y lo guardo.
+			if(torneo==null){
+				torneo = new Torneo(liga,20);
+				torneoRepository.save(torneo);
+			}
+			//Me creo el equipo y le asigno el torneo en el que participa.
 			Equipo equipo = new Equipo(nombreEquipo,liga,nacionalidadEquipo,numTorneoGanados);
+			equipo.setTorneo(torneo);
 			equipoRepository.save(equipo);
+			
+			File dirFichas = null;
+			try{
+				dirFichas = new File("fichas");
+				if (!dirFichas.exists()) {
+					dirFichas.mkdir();
+				}
+			}catch(Exception e){
+				e.printStackTrace();
+			}finally{				
+			}
 			
 			File dirEquipo = null;
 			try{
-			dirEquipo = new File("fichas/"+nombreEquipo);
-			if (!dirEquipo.exists()) {
-				dirEquipo.mkdir();
-			}
+				dirEquipo = new File("fichas/"+nombreEquipo);
+				if (!dirEquipo.exists()) {
+					dirEquipo.mkdir();
+				}
 			}catch(Exception e){
 				e.printStackTrace();
-			}finally{
-				
+			}finally{				
 			}
 			
 			return "equiporegistrado";

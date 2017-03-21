@@ -51,6 +51,10 @@ El servicio interno de nuestra aplicación, va a ser utilizado para generar las 
 
 ![](imagenes/diagramauml.png "Diag. uml")
 
+## Diagrama de Clases:
+
+![](imagenes/diagramaclases.png "D. clases")
+
 ## Pantallazos de la aplicación:
 
 A continuación, vamos a mostrar cada una de las pantallas de nuestra aplicación, así como las funcionalidades de las mismas.
@@ -198,3 +202,9 @@ Mostramos los equipos de un determinado torneo.
 Por otro lado, en caso de no existir el torneo introducido, muestra el siguiente mensaje de error.
 
 ![](imagenes/28.png "Error Torneo no Existe")
+
+### Manual de Azure:
+
+![](imagenes/manualazure.png "Man. Azure")
+
+**Nota:** Si apagas y vuelves a encender la máquina virtual, cambian las IP's pública y privada de la máquina. Por tanto, habría que cambiar lo necesario en la BBDD y al ejecutar el jar, si queremos volver a arrancar la aplicación en Azure.
