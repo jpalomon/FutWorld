@@ -212,3 +212,7 @@ Por otro lado, en caso de no existir el torneo introducido, muestra el siguiente
 ![](imagenes/manualazure.png "Man. Azure")
 
 **Nota:** Si apagas y vuelves a encender la máquina virtual, cambian las IP's pública y privada de la máquina. Por tanto, habría que cambiar lo necesario en la BBDD y al ejecutar el jar, si queremos volver a arrancar la aplicación en Azure.
+
+### Video Youtube:
+
+[![Everything Is AWESOME](http://i.imgur.com/Ot5DWAW.png)](https://youtu.be/StTqXEQ2l-Y?t=35s "Everything Is AWESOME")
