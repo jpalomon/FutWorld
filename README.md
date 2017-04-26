@@ -37,7 +37,7 @@ El servicio interno de nuestra aplicación, va a ser utilizado para generar las 
 1. Jorge Palomo Neila. Correo: j.palomon@alumnos.urjc.es
 2. Francisco Miján Sánchez. Correo: f.mijans@alumnos.urjc.es
 
-# ** FASE 3 **
+# ** FASE 4 **
 
 ## Diagrama de Navegación:
 
@@ -54,6 +54,10 @@ El servicio interno de nuestra aplicación, va a ser utilizado para generar las 
 ## Diagrama de Clases:
 
 ![](imagenes/diagramaclases.png "D. clases")
+
+## Esquema de Azure:
+
+![](imagenes/esquemaAzure.png "Azure")
 
 ## Pantallazos de la aplicación:
 
