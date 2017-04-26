@@ -215,4 +215,4 @@ Por otro lado, en caso de no existir el torneo introducido, muestra el siguiente
 
 ### Video Youtube:
 
-[![Everything Is AWESOME](http://i.imgur.com/Ot5DWAW.png)](https://youtu.be/StTqXEQ2l-Y?t=35s "Everything Is AWESOME")
+[![Everything Is AWESOME]](https://youtu.be/StTqXEQ2l-Y?t=35s "Everything Is AWESOME")
