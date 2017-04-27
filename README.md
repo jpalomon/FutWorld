@@ -212,3 +212,7 @@ Por otro lado, en caso de no existir el torneo introducido, muestra el siguiente
 ![](imagenes/manualazure.png "Man. Azure")
 
 **Nota:** Si apagas y vuelves a encender la máquina virtual, cambian las IP's pública y privada de la máquina. Por tanto, habría que cambiar lo necesario en la BBDD y al ejecutar el jar, si queremos volver a arrancar la aplicación en Azure.
+
+### Video Funcionamiento de FutWorld (fase 4):
+
+[![Funcionamiento de la Aplicación Fase 4]](https://www.youtube.com/watch?v=JsHhGyM8rjU&feature=youtu.be "Funcionamiento de la Aplicación Fase 4")
