@@ -31,7 +31,7 @@ public class FutWorldApplication {
 		Config config = new Config();
 		JoinConfig joinConfig = config.getNetworkConfig().getJoin();
 		joinConfig.getMulticastConfig().setEnabled(false);
-		joinConfig.getTcpIpConfig().setEnabled(true).setMembers(Collections.singletonList("127.0.0.1"));
+		joinConfig.getTcpIpConfig().addMember( "100.114.244.42" ).addMember( "100.114.216.85" ).setEnabled( true );
 		return config;
 	}
 	
