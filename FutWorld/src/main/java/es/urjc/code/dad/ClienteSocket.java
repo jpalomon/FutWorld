@@ -15,7 +15,7 @@ public class ClienteSocket {
 	private int puerto;
 		
 	public ClienteSocket(){
-		this.host = "127.0.0.1";
+		this.host = "100.114.176.17";
 		this.puerto = 5555;
 	}
 
